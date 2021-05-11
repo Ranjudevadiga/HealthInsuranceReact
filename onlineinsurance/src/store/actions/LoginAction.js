@@ -37,7 +37,7 @@ export const registrationSuccess=(customerId)=>{
     console.log("inside registration success");
     alert("Customer registered successfully");
     
-  //window.location.href="/addcus?Id="+customerId;
+  window.location.href="/addCus?Id="+customerId;
     return{
         type:'REGN_SUCCESS'
     }
@@ -66,5 +66,44 @@ export const registerCustomer=(payload)=>{
             throw(Error);
         });
        
+    };
+};
+
+
+export const additionSuccess=()=>{
+    console.log("inside customer addiotn succes method");
+    alert("Customer details added successfully");
+    
+    window.location.href="/login";
+    return{
+        type:'CUST_DETAIL_ADD_SUCCESS'
+    }
+
+
+}
+export const addCustDetails=(payload)=>{
+    console.log("inside add customer details method");
+    let data={
+        isDiabetic:payload.isDiabetic,
+        isSmoker:payload.isSmoker,
+        isAlcoholict:payload.isAlcoholic,
+        bodyMassIndex:payload.bodyMassIndex,
+        age:payload.age,
+        salaryBracket:payload.salaryBracket,
+        customerId:payload.customerId
+
+    }
+    console.log(data.customerId);
+    return(dispatch)=>{
+        return axios.post(LOGINURL+"/addCustomerDetail",data)
+        .then(Response=>{
+            console.log(Response.data);
+            dispatch(additionSuccess());
+        })
+        .catch(Error=>{
+            console.log("error");
+            console.log("here");
+            throw(Error);
+        });
     };
 };

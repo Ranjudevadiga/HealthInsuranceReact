@@ -5,7 +5,7 @@ import {BrowserRouter as Router, Route,Switch} from 'react-router-dom';
 import Login from './components/Login';
 
 import UserComponent from './components/user/UserComponent';
-
+import AddCustomerDetails from './components/user/AddCustomerDetails';
 import AdminComponent from './components/admin/AdminComponent';
 import RegisterCustomer from './components/user/RegisterCustomer';
 import AdminPolicyDisplay from './components/admin/AdminPolicyDisplay'
@@ -23,6 +23,7 @@ function App() {
       <Route path="/user" exact component={UserComponent}></Route>
       <Route path="/register" exact component={RegisterCustomer}></Route>
       <Route path="/adminviewpolicy" exact component={AdminPolicyDisplay}></Route>
+      <Route path="/addCus" exact component={AddCustomerDetails}></Route>
       </Switch>
       </Router>
     </div>

@@ -16,6 +16,12 @@ export default function LoginReducer(state=initialState,action){
                 ...state,
                 register:action.register
             };
+        case 'CUST_DETAIL_ADD_SUCCESS':
+            return{
+                    ...state,
+                    customerDetails:action.customerDetails
+    
+            };
        
             default:
                 return state;
