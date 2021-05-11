@@ -16,7 +16,7 @@ export const loginValidate=(payload)=>{
         emailId:payload.emailId,
         password:payload.password
    }
-    
+    console.log(data.emailId);
     return (dispatch)=>{
         return axios.post(LOGINURL+"/validate",data)
         
@@ -33,4 +33,38 @@ export const loginValidate=(payload)=>{
         });
     };
 };
+export const registrationSuccess=(customerId)=>{
+    console.log("inside registration success");
+    alert("Customer registered successfully");
+    
+  //window.location.href="/addcus?Id="+customerId;
+    return{
+        type:'REGN_SUCCESS'
+    }
 
+}
+export const registerCustomer=(payload)=>{
+    console.log("inside register customer method");
+    let data={
+        firstName:payload.firstName,
+        lastName:payload.lastName,
+        emailId:payload.emailId,
+        password:payload.password,
+        role:payload.role
+    }
+    
+    return(dispatch)=>{
+        return axios.post(LOGINURL+"/registerCustomer",data)
+        .then(Response=>{
+         
+             document.getElementById('customerId').value=Response.data;
+          
+            dispatch(registrationSuccess(Response.data));
+        })
+        .catch(Error=>{
+            console.log("error");
+            throw(Error);
+        });
+       
+    };
+};

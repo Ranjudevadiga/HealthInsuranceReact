@@ -33,7 +33,7 @@ class Login extends Component{
    render(){
     let login=this.props.login;
     
-    
+
     if(login!==undefined)
     {
         if(login.role==="admin")
@@ -52,10 +52,10 @@ class Login extends Component{
     }
     return(
         <div>
-            
+            <h1>Login</h1>
             <div className="row">
                         <div className="card col-md-6 offset-md-3 offset-md-3">
-                            <h2 className="text-center">Login</h2>
+                            <h3 className="text-center">Login</h3>
                             <div className="card-body"></div>
             <form>
                 <div className="form-group">
