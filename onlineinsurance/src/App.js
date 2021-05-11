@@ -8,8 +8,9 @@ import UserComponent from './components/user/UserComponent';
 
 import AdminComponent from './components/admin/AdminComponent';
 import RegisterCustomer from './components/user/RegisterCustomer';
+import AdminPolicyDisplay from './components/admin/AdminPolicyDisplay'
 
-function App() {
+function App() { 
   return (
     <div className="App">
      
@@ -21,7 +22,7 @@ function App() {
       <Route path="/admin" exact component={AdminComponent}></Route>
       <Route path="/user" exact component={UserComponent}></Route>
       <Route path="/register" exact component={RegisterCustomer}></Route>
-     
+      <Route path="/adminviewpolicy" exact component={AdminPolicyDisplay}></Route>
       </Switch>
       </Router>
     </div>

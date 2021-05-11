@@ -38,7 +38,7 @@ class Login extends Component{
     {
         if(login.role==="admin")
         {
-            return <Redirect to="/admin"></Redirect>
+            return <Redirect to="/adminviewpolicy"></Redirect>
         }
         else if(login.role==="user"){
             alert("valid user....");
@@ -52,10 +52,10 @@ class Login extends Component{
     }
     return(
         <div>
-            <h1>Login</h1>
+            
             <div className="row">
                         <div className="card col-md-6 offset-md-3 offset-md-3">
-                            <h3 className="text-center">Login</h3>
+                            <h2 className="text-center">Login</h2>
                             <div className="card-body"></div>
             <form>
                 <div className="form-group">
