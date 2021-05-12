@@ -49,3 +49,35 @@ return(dispatch)=>{
     })
 };
 };
+
+export const createPolicySuccess=(Policies)=>{
+    console.log("inside create Policy Success ");
+    alert("Policy Added Successfully");
+    window.location.href="/viewAllPolicies";
+    return {
+        type:'POLICY_CREATION_SUCCESS',Policies
+    }
+};
+
+export const createPolicy = (payload) => {
+    console.log("inside add policy");
+let data={
+    policyName:payload.policyName,
+    ageGroup:payload.ageGroup,
+    policyTerm:payload.policyTerm,
+    baseAmount:payload.baseAmount,
+    policyCover:payload.policyCover
+}
+    return (dispatch) => {
+        return axios.post(POLICYADMURL + "/addPolicy", data)
+        .then(Response=>{
+            dispatch(createPolicySuccess(Response.data));
+        })
+        .catch(Error=>{
+            console.log("error");
+            throw(Error);
+        });
+
+    };
+
+};

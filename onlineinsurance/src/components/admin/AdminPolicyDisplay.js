@@ -7,7 +7,10 @@ class AdminPolicyDisplay extends Component{
     constructor(props)
     {
         super(props)
-        
+        this.addPolicy=this.addPolicy.bind(this);
+    }
+    addPolicy=()=>{
+        window.location.href="/add-Policy"
     }
     logout(){
         window.location.href="/login"
@@ -25,7 +28,9 @@ class AdminPolicyDisplay extends Component{
         let login=this.props.login;
         return(
             <Fragment>
+                 <button className="btn btn-warning"style={{marginLeft:"90%"}} onClick={this.logout}>Log out</button>
                 <h2 align="center">Policy List</h2>
+               
                 <table className="table table-striped table-bordered">
                     
                     <thead>
@@ -35,7 +40,6 @@ class AdminPolicyDisplay extends Component{
                             <th>Age Group</th>
                             <th>Base Amount</th>
                             <th>Policy Cover</th>
-                          
                             <th>Policy Term</th>
                             <th>Option</th>
                         </tr>
@@ -49,9 +53,6 @@ class AdminPolicyDisplay extends Component{
                                     <td>{pol.ageGroup}</td>
                                     <td>{pol.baseAmount}</td>
                                     <td>{pol.policyCover}</td>
-                                    
-                                    
-                                    
                                     <td>{pol.policyTerm}</td>
                                     <td>{
                                        <Fragment>
@@ -70,7 +71,7 @@ class AdminPolicyDisplay extends Component{
                         }
                     </tbody>
                 </table>
-                <button className="btn btn-warning" onClick={this.logout}>Log out</button>
+                <Link to="/add-Policy"><button className="btn btn-info" onClick={this.addPolicy}>Add Policy</button></Link>
                 <Link to="/admin"><button className="btn btn-info">Back to admin page</button></Link>
             </Fragment>
         );

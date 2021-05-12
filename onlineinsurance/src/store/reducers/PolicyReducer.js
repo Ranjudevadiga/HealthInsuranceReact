@@ -30,6 +30,12 @@ export default function LoginReducer(state=initialState,action){
             ...state,
             policyDetails:action.policyDetails
         }
+    case 'POLICY_CREATION_SUCCESS':
+        return{
+            ...state,
+            policies:action.policies
+        }
+        
 
      default:
                 return state;
