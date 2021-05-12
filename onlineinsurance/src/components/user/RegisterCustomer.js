@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 
 import * as LoginAction from '../../store/actions/LoginAction';
 import {bindActionCreators} from 'redux';
+import './RegisterCustomer.css'
 
 class RegisterCustomer extends Component{
     constructor(props){
@@ -42,39 +43,31 @@ onChange=(seg)=>this.setState({[seg.target.name]:seg.target.value});
            
             <div>
                 <br></br>
-                <div className="container">
-                    <div className="row">
-                        <div className="card col-md-6 offset-md-3 offset-md-3">
-                            <h3 className="text-center">Register</h3>
-                            <div className="card-body">
-                                <form>
-                                    <div className="form-group">
-                                        <label>First Name</label>
-                                        <input type="text" placeholder="Enter FirstName" id="firstName" name="firstName" value={this.state.firstName} className="form-control" onChange={this.onChange} required></input>
-                                    </div> 
-                                    <div>   
-                                        <label>Last Name</label>
-                                        <input type="text" placeholder="Enter LastName" name="lastName" value={this.state.lastName} className="form-control" onChange={this.onChange} required></input>
-                                  </div> 
-                                   <div>    
-                                        <label>Email Id</label>
-                                        <input type="email" placeholder="Enter email" name="emailId" value={this.state.emailId} className="form-control" onChange={this.onChange} required></input>
-                                    </div>
-                                        <div>
-                                        <label>Password</label>
-                                        <input type="password" placeholder="Enter password" name="password" value={this.state.password} className="form-control" onChange={this.onChange} required></input>
-                                    
-                                    </div>
-                                   
-                                    <input type="hidden"  name="customerId" id="customerId" value="" ></input>
-                                    
-                                    
-
-                                    <button className="btn btn-success" onClick={this.registration}>Save</button>
-                                </form>
-                            </div>
-                        </div>
+                <div className="SignUp">
+                <div class="box">
+                   <h2>Sign Up</h2>
+                <form>
+                    <div class="inputBox">
+                      <input type="text" placeholder="Enter FirstName" id="firstName" name="firstName" value={this.state.firstName} className="form-control" onChange={this.onChange} required></input><br></br>
+                        
                     </div>
+                    <div class="inputBox">
+                       <input type="text" placeholder="Enter LastName" name="lastName" value={this.state.lastName} className="form-control" onChange={this.onChange} required></input><br></br>
+                         
+                    </div>  
+                    <div class="inputBox">
+                      <input type="email" placeholder="Enter email" name="emailId" value={this.state.emailId} className="form-control" onChange={this.onChange} required></input><br></br>
+                        
+                     </div>  
+                    <div class="inputBox">
+                     <input type="password" placeholder="Enter password" name="password" value={this.state.password} className="form-control" onChange={this.onChange} required></input><br></br>
+                      
+                     
+                    <input type="hidden"  name="customerId" id="customerId" value="" ></input>
+                    </div>              
+                  <button className="btn btn-success" onClick={this.registration}>Save</button>
+                 </form>
+                </div>
                 </div>
                
                 </div>
