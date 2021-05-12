@@ -43,7 +43,7 @@ class Login extends Component{
         }
         else if(login.role==="user"){
             alert("valid user....");
-            return <Redirect to="/user"></Redirect>
+            return <Redirect to="/customerViewPolicy"></Redirect>
         }
         else{
             alert("invalid user....");

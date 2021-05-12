@@ -9,7 +9,7 @@ import AddCustomerDetails from './components/user/AddCustomerDetails';
 import AdminComponent from './components/admin/AdminComponent';
 import RegisterCustomer from './components/user/RegisterCustomer';
 import AdminPolicyDisplay from './components/admin/AdminPolicyDisplay'
-
+import PolicyDisplay from './components/user/PolicyDisplay'
 function App() { 
   return (
     <div className="App">
@@ -24,6 +24,7 @@ function App() {
       <Route path="/register" exact component={RegisterCustomer}></Route>
       <Route path="/adminviewpolicy" exact component={AdminPolicyDisplay}></Route>
       <Route path="/addCus" exact component={AddCustomerDetails}></Route>
+      <Route path="/customerViewPolicy" exact component={PolicyDisplay}></Route>
       </Switch>
       </Router>
     </div>
