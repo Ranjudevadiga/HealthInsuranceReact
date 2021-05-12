@@ -12,6 +12,7 @@ import AdminPolicyDisplay from './components/admin/AdminPolicyDisplay';
 import PolicyDisplay from './components/user/PolicyDisplay';
 import addPolicy from './components/admin/addPolicy';
 import ViewCustomer from './components/admin/ViewCustomer';
+import AdminUpdatePolicy from './components/admin/AdminUpdatePolicy'
 function App() { 
   return (
     <div className="App">
@@ -29,6 +30,7 @@ function App() {
       <Route path="/customerViewPolicy" exact component={PolicyDisplay}></Route>
       <Route path="/add-Policy" exact component={addPolicy}></Route>
       <Route path="/viewcustomers" exact component={ViewCustomer}></Route>
+      <Route path="/edit-policy" exact component={AdminUpdatePolicy}></Route>
       </Switch>
       </Router>
     </div>

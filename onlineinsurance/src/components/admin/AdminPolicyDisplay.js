@@ -57,7 +57,7 @@ class AdminPolicyDisplay extends Component{
                                     <td>{
                                        <Fragment>
                                         
-                                           <button style={{marginLeft:"5px"}} type="button" className="btn btn-success btn-sm"><span className="glyphicon glyphicon-edit"></span></button>
+                                        <Link to ={{pathname: '/edit-policy',state:{pol}}}> <button style={{marginLeft:"5px"}} type="button" className="btn btn-success btn-sm"><span className="glyphicon glyphicon-edit"></span></button></Link>
                                           
                                          <button style={{marginLeft:"5px"}}  className="btn btn-danger" onClick={()=>this.onDeletePost(pol.policyId)}><i className="fa fa-trash" aria-hidden="true"></i></button>
                                            </Fragment>

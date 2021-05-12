@@ -1,7 +1,8 @@
 const initialState={
    
     policies:[],
-    policyDetails:[]
+    policyDetails:[],
+    editpolicy:undefined
     
 }
 
@@ -35,6 +36,12 @@ export default function LoginReducer(state=initialState,action){
             ...state,
             policies:action.policies
         }
+
+        case 'POLICY_EDITED' :
+            return {
+                ...state,
+                editpolicy : 'edited'
+            }
         
 
      default:

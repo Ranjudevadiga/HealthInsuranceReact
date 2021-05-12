@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const POLICYURL="http://localhost:8081/customer";
-const POLICYADMURL="http://localhost:8081/admin";
+const POLICYURL="http://localhost:8088/customer";
+const POLICYADMURL="http://localhost:8088/admin";
 
 export const getPolicySuccess=(policies)=>{
     console.log("inside registration success");
@@ -80,4 +80,34 @@ let data={
 
     };
 
+};
+
+export const editPolicySuccess=()=>{
+    console.log("inside editItemSuccess method");
+    return {
+        type : 'POLICY_EDITED'
+    }
+};
+
+export const editPolicy = (payload) =>{
+    console.log("inside editItem method");
+    let item = {
+        policyId : payload.policyId,
+        policyName : payload.policyName,
+        ageGroup : payload.ageGroup,
+        policyTerm:payload.policyTerm,
+        baseAmount:payload.baseAmount,
+        policyCover:payload.policyCover
+    }
+    return (dispatch)=> {
+        return axios.put(POLICYADMURL+"/updatePolicy",item)
+        .then(Response => {
+            console.log("api call");
+            dispatch(editPolicySuccess());
+        })
+        .catch(Error=> {
+            console.log("Error");
+            throw(Error);
+        });
+    };
 };
