@@ -2,7 +2,8 @@ import React,{ Component} from 'react';
 import {connect} from 'react-redux';
 import * as UserAction from '../../store/actions/UserAction'
 import { bindActionCreators } from 'redux';
-
+import {Link} from 'react-router-dom';
+import './viewCustomer.css';
 
 
 //import 'bootstrap/dist/css/bootstrap.min.css';
@@ -14,9 +15,7 @@ constructor(props){
     componentDidMount(){
         this.props.UserAction.getCustomer()
     }
-    backToAdmin(){
-        window.location.href="/admin";
-    }
+    
     logout(){
         window.location.href="/login"
     }
@@ -27,7 +26,7 @@ render(){
   return(
       <div>
           <h1>CUSTOMER</h1>
-          <table className="table-bordered table-dark" align="center" width="50%">
+          <table className="customer-table" align="center" width="50%">
               
               <thead>
                   <tr>
@@ -53,7 +52,7 @@ render(){
                 </tbody>
           </table><br></br>
           <button className="btn btn-warning" id="bt" onClick={this.logout}>Logout</button>
-          <button className="btn btn-warning" id="bt" onClick={this.backToAdmin}>Back To Admin</button>
+          <Link to="/admin"><button className="btn btn-info">Back to admin page</button></Link>
          
      </div>
   );

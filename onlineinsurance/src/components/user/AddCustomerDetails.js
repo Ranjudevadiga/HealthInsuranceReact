@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as LoginAction from '../../store/actions/LoginAction';
 import {bindActionCreators} from 'redux';
+import './RegisterCustomer.css'
 
 class AddCustomerDetails extends Component{
    constructor(props){
@@ -13,15 +14,53 @@ class AddCustomerDetails extends Component{
         bodyMassIndex:'',
         age:'',
         salaryBracket:'',
-        customerId:''
+        customerId:'',
+        errors:{}
         
        }
        
        this.addCustomerDetails=this.addCustomerDetails.bind(this);
    }
+   validate = () => {
+        let errors = {}
+        let formIsValid = true
+        if(!this.state.isDiabetic)
+        {
+            formIsValid = false
+            errors['isDiabetic'] = '*Please enter is diabetic field '
+        }
+        if(!this.state.isAlcoholic)
+        {
+            formIsValid = false
+            errors['isAlcoholic'] = '*Please enter is Alchoholic field '
+        }
+        if(!this.state.isSmoker)
+        {
+            formIsValid = false
+            errors['isSmoker'] = '*Please enter is Smoker field '
+        }
+        if(!this.state.bodyMassIndex)
+        {
+            formIsValid = false
+            errors['bodyMassIndex'] = '*Please enter is BodyMassIndex '
+        }
+        if(!this.state.age)
+        {
+            formIsValid = false
+            errors['age'] = '*Please enter Age '
+        }
+        if(!this.state.salaryBracket)
+        {
+            formIsValid = false
+            errors['salaryBracket'] = '*Please enter Salary Bracket '
+        }
+        
+        this.setState({ errors })
+        return formIsValid
+   }
    addCustomerDetails=(add)=>{
     add.preventDefault();
-   
+    if(this.validate()){
        let payload={
         isDiabetic:this.state.isDiabetic,
         isSmoker:this.state.isSmoker,
@@ -33,6 +72,7 @@ class AddCustomerDetails extends Component{
        }
        console.log(payload.customerId);
        this.props.LoginAction.addCustDetails(payload);
+    }
    }
    onChange=(add)=>this.setState({[add.target.name]:add.target.value});
    render(){
@@ -55,43 +95,54 @@ class AddCustomerDetails extends Component{
                                     <label>Are you Diabetic?</label>
                                     <br></br>
                                     <select name="isDiabetic" onChange={this.onChange} className="form-control">
-                                       
+                                         <option value="Select">Select</option>
                                         <option value="yes">Yes</option>
                                         <option value="no">No</option>
                                     </select>
+                                    <div  className='errorMsg'>{this.state.errors.isDiabetic}</div><br></br>
+
    
                                 </div> 
                                 <div>   
                                     <label>Are you smoker?</label>
                                     <br></br>
-                                    <select name="isSmoker" onChange={this.onChange} className="form-control">
+                                    <select name="isSmoker" onChange={this.onChange} className="form-control" >
+                                    <option value="Select">Select</option>
                                         <option value="yes">Yes</option>
                                         <option value="no">No</option>
                                     </select>
+                                    <div  className='errorMsg'>{this.state.errors.isSmoker}</div><br></br>
+
                                     </div>
                                <div>    
                                     <label>Are you alcoholic?</label>
                                     <br></br>
                                     <select name="isAlcoholic" onChange={this.onChange} className="form-control">
+                                    <option value="Select">Select</option>
                                         <option value="yes">Yes</option>
                                         <option value="no">No</option>
                                        
                                     </select>
+                                    <div  className='errorMsg'>{this.state.errors.isAlcoholic}</div><br></br>
+
                                     </div>
                                     <div>
                                     <label>Body Mass Index</label>
-                                    <input type="text" placeholder="Enter bodymassindex" name="bodyMassIndex" value={this.state.bodyMassIndex} className="form-control" onChange={this.onChange}></input>
-                                
+                                    <input type="number" placeholder="Enter bodymassindex" name="bodyMassIndex" value={this.state.bodyMassIndex} className="form-control" onChange={this.onChange}></input>
+                                    <div  className='errorMsg'>{this.state.errors.bodyMassIndex}</div><br></br>
+
                                 </div>
                                 <div>
                                     <label>Age</label>
-                                    <input type="text" placeholder="Enter Age" name="age" value={this.state.age} className="form-control" onChange={this.onChange}></input>
-                                
+                                    <input type="number" placeholder="Enter Age" name="age" value={this.state.age} className="form-control" onChange={this.onChange}></input>
+                                    <div  className='errorMsg'>{this.state.errors.age}</div><br></br>
+
                                 </div>
                                 <div>
                                     <label>Salary Bracket</label>
-                                    <input type="text" placeholder="Enter salaryBracket" name="salaryBracket" value={this.state.salaryBracket} className="form-control" onChange={this.onChange}></input>
-                                
+                                    <input type="number" placeholder="Enter salaryBracket" name="salaryBracket" value={this.state.salaryBracket} className="form-control" onChange={this.onChange}></input>
+                                    <div  className='errorMsg'>{this.state.errors.salaryBracket}</div><br></br>
+
                                 </div>
                                 <div>
                                     

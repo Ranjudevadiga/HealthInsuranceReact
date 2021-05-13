@@ -50,4 +50,21 @@
     font-size: 1rem;
   }
   
+  .box .errorMsg{
+    float:left;
+   top: -10px;
+    color: #f40303;
+    font-size: 1.3rem;
+
+
+  }
+  .card-body .errorMsg{
+    float:left;
+   top: -10px;
+    color: #f40303;
+    font-size: 1.3rem;
+
+
+  }
+
      

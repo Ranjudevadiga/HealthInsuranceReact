@@ -11,20 +11,40 @@ class Login extends Component{
        super();
        this.state={
            emailId:'',
-           password:''
+           password:'',
+           errors:{}
            
 
        }
        
        
    }
+   validate = () => {
+    let errors = {}
+    let formIsValid = true
+    if(!this.state.emailId)
+        {
+            formIsValid = false
+            errors['emailId'] = '*Please Enter Email Id '
+        }
+        if(!this.state.password)
+        {
+            formIsValid = false
+            errors['password'] = '*Please Enter Password '
+        }
+        
+        this.setState({ errors })
+        return formIsValid
+    }
    validation=(usr)=>{
+    if(this.validate()){
     let payload={
         emailId:this.state.emailId,
         password:this.state.password
     }
     this.props.LoginAction.loginValidate(payload);
     usr.preventDefault();
+}
 
    
 }
@@ -39,7 +59,7 @@ class Login extends Component{
     {
         if(login.role==="admin")
         {
-            return <Redirect to="/adminviewpolicy"></Redirect>
+            return <Redirect to="/admin"></Redirect>
         }
         else if(login.role==="user"){
             alert("valid user....");
@@ -57,12 +77,14 @@ class Login extends Component{
   <h2>Login</h2>
   <form>
     <div class="inputBox">
-       <input type="text" name="emailId" className="form-control" value={this.state.emailId} onChange={this.onChange} required/><br></br>
+       <input type="text" name="emailId" className="form-control" value={this.state.emailId} onChange={this.onChange} required/>
       <label>Username</label>
+
     </div>
     <div class="inputBox">
-      <input type="password" name="password" className="form-control" value={this.state.password} onChange={this.onChange} required></input><br></br>
+      <input type="password" name="password" className="form-control" value={this.state.password} onChange={this.onChange} required></input>
       <label>Password</label>
+
       </div>
       
       <button className="btn btn-success" onClick={this.validation}>Login</button>

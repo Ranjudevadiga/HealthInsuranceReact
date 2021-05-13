@@ -13,24 +13,60 @@ class AdminUpdatePolicy extends Component {
             ageGroup : props.location.state.pol.ageGroup,
             policyTerm : props.location.state.pol.policyTerm,
             baseAmount : props.location.state.pol.baseAmount,
-            policyCover : props.location.state.pol.policyCover
+            policyCover : props.location.state.pol.policyCover,
+            errors:{}
         }
     }
     componentDidMount(){
         console.log(this.props.location.state);
     }
+    validate = () => {
+        let errors = {}
+        let formIsValid = true
+        if(!this.state.policyName)
+        {
+            formIsValid = false
+            errors['policyName'] = '*Please enter Policy name'
+        }
+        if(!this.state.ageGroup)
+        {
+            formIsValid = false
+            errors['ageGroup'] = '*Please Enter  Age'
+        }
+        if(!this.state.policyTerm)
+        {
+            formIsValid = false
+            errors['policyTerm'] = '*Please enter  Policy Term'
+        }
+        if(!this.state.baseAmount)
+        {
+            formIsValid = false
+            errors['baseAmount'] = '*Please enter Base Amount'
+        }
+        if(!this.state.policyCover)
+        {
+            formIsValid = false
+            errors['policyCover'] = '*Please enter Policy Cover '
+        }
+
+        this.setState({ errors })
+        return formIsValid
+    }
+
     updatePolicy= (e) =>{
         e.preventDefault();
-        let payload = {
-            policyId : this.state.policyId,
-            policyName : this.state.policyName,
-            ageGroup : this.state.ageGroup,
-            policyTerm : this.state.policyTerm,
-            baseAmount : this.state.baseAmount,
-            policyCover : this.state.policyCover
+        if(this.validate()){
+            let payload = {
+                policyId : this.state.policyId,
+                policyName : this.state.policyName,
+                ageGroup : this.state.ageGroup,
+                policyTerm : this.state.policyTerm,
+                baseAmount : this.state.baseAmount,
+                policyCover : this.state.policyCover
+            }
+            this.props.PolicyAction.editPolicy(payload);
+            this.props.history.push("/adminviewpolicy");
         }
-        this.props.PolicyAction.editPolicy(payload);
-        this.props.history.push("/adminviewpolicy");
     }
     onChange = (obj) => {
         this.setState({[obj.target.name] : obj.target.value});
@@ -47,14 +83,24 @@ class AdminUpdatePolicy extends Component {
                     <input type="text" name="policyId" className="form-control" value={this.state.policyId} onChange={this.onChange}  readOnly></input><br></br>
                     <label>Enter Policy Name</label>
                     <input type="text" name="policyName" className="form-control" value={this.state.policyName} onChange={this.onChange}  required="required"></input><br></br>
+                    <div  className='errorMsg'>{this.state.errors.policyName}</div><br></br>
+
                     <label>Enter Age Group</label>
-                    <input type="text" name="ageGroup" className="form-control" value={this.state.ageGroup} onChange={this.onChange}></input><br></br>
+                    <input type="number" name="ageGroup" className="form-control" value={this.state.ageGroup} onChange={this.onChange}></input><br></br>
+                    <div  className='errorMsg'>{this.state.errors.ageGroup}</div><br></br>
+
                     <label>Enter Policy Term</label>
-                    <input type="text" name="policyTerm" className="form-control" value={this.state.policyTerm} onChange={this.onChange}></input> <br></br>
+                    <input type="number" name="policyTerm" className="form-control" value={this.state.policyTerm} onChange={this.onChange}></input> <br></br>
+                    <div  className='errorMsg'>{this.state.errors.policyterm}</div><br></br>
+
                     <label>Enter Base Amount</label>
-                    <input type="text" name="baseAmount" className="form-control" value={this.state.baseAmount} onChange={this.onChange}></input> <br></br>
+                    <input type="number" name="baseAmount" className="form-control" value={this.state.baseAmount} onChange={this.onChange}></input> <br></br>
+                    <div  className='errorMsg'>{this.state.errors.baseAmount}</div><br></br>
+
                     <label>Enter Policy Cover</label>
-                    <input type="text" name="policyCover" className="form-control" value={this.state.policyCover} onChange={this.onChange}></input> <br></br>
+                    <input type="number" name="policyCover" className="form-control" value={this.state.policyCover} onChange={this.onChange}></input> <br></br>
+                    <div  className='errorMsg'>{this.state.errors.policyCover}</div><br></br>
+
                 </div>
                     <button className="btn btn-success" onClick={this.updatePolicy}>update item</button>
                     <Link to="/adminviewpolicy"> <button className="btn btn-danger">Cancel</button></Link> 

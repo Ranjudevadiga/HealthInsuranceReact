@@ -1,0 +1,48 @@
+.customer-table table { 
+	width: 750px; 
+	border-collapse: collapse; 
+	margin:50px auto;
+    
+	}
+
+.customer-table tr { 
+    
+	background: rgb(5, 11, 61);
+    color: white; 
+	}
+
+    .customer-table th { 
+	background: #b1afbe; 
+	color: white; 
+	font-weight: bold; 
+	}
+
+    .customer-table td, th { 
+	padding: 10px; 
+	border: 1px solid #ccc; 
+	text-align: left; 
+	font-size: 18px;
+	}
+    #AdminUpdatePolicy .form-group{
+        width:300px;
+        align-self: center;
+        margin: 50px auto;
+       
+    
+    width: 35rem;
+    padding: 2.5rem;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 0.625rem;
+       
+       
+    }
+    .form-group .form-control{
+    color:rgb(5, 5, 5)
+    
+    
+    }
+     label{
+        color: rgb(253, 253, 253);
+        font-size: medium;
+    }

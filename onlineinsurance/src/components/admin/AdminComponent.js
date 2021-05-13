@@ -6,9 +6,7 @@ class AdminComponent extends Component{
     logout(){
         window.location.href="/";
     }
-    view(){
-        window.location.href="/viewcustomers";
-    }
+  
 render(){
     let login=this.props.login;
     if(login===undefined){
@@ -22,8 +20,11 @@ render(){
         <Link to="/adminviewpolicy">
             <button className="btn btn-info">View Policies</button>
         </Link> &nbsp;
+        <Link to="/viewcustomers">
+            <button className="btn btn-info">View customers</button>
+        </Link>
                 <button className="btn btn-warning" id="bt" onClick={this.logout}>Logout</button>
-                <button className="btn btn-warning" id="bt" onClick={this.view}>Customers</button>            
+                            
             </div>
         </body>
     );

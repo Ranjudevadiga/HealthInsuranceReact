@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as PolicyAction from '../../store/actions/PolicyAction';
 import {bindActionCreators} from 'redux';
+import './addPolicy.css'
 class addPolicy extends Component{
     constructor(props) {
         super(props)
@@ -11,6 +12,7 @@ class addPolicy extends Component{
             policyTerm: '',
             baseAmount: '',
             policyCover: '',
+            errors:{}
 
         }
 
@@ -26,26 +28,65 @@ class addPolicy extends Component{
 
 
     listOfPolicies() {
-        //window.location.href = "/adminviewpolicy"
-        alert("Policy added Successfully");
+        window.location.href = "/adminviewpolicy"
+        //alert("Policy added Successfully");
+    }
+    validate = () => {
+        let errors = {}
+        let formIsValid = true
+        if(!this.state.policyName)
+        {
+            formIsValid = false
+            errors['policyName'] = '*Please enter Policy name'
+        }
+        if(!this.state.ageGroup)
+        {
+            formIsValid = false
+            errors['ageGroup'] = '*Please Enter  Age'
+        }
+        else  if(!this.state.ageGroup.match("^[0-9]")){
+            formIsValid = false;
+            errors['ageGroup'] = '*Please Enter Only Numbers ';
+         }  
+        if(!this.state.policyTerm)
+        {
+            formIsValid = false
+            errors['policyTerm'] = '*Please enter  Policy Term'
+        }
+        if(!this.state.baseAmount)
+        {
+            formIsValid = false
+            errors['baseAmount'] = '*Please enter Base Amount'
+        }
+        if(!this.state.policyCover)
+        {
+            formIsValid = false
+            errors['policyCover'] = '*Please enter Policy Cover '
+        }
+        
+        this.setState({ errors })
+        return formIsValid
+
     }
 
     savePolicy = (e) => {
         e.preventDefault();
-        let policy = {
-            policyName: this.state.policyName,
-            ageGroup: this.state.ageGroup,
-            policyTerm: this.state.policyTerm,
-            baseAmount: this.state.baseAmount,
-            policyCover: this.state.policyCover
+        if(this.validate()){
+            let policy = {
+                policyName: this.state.policyName,
+                ageGroup: this.state.ageGroup,
+                policyTerm: this.state.policyTerm,
+                baseAmount: this.state.baseAmount,
+                policyCover: this.state.policyCover
 
+            }
+            console.log(policy.ageGroup)
+
+            PolicyAction.createPolicy(policy)(res => {
+                this.listOfPolicies();
+            })
         }
-        console.log(policy.ageGroup)
-
-        PolicyAction.createPolicy(policy)(res => {
-            this.listOfPolicies();
-        })
-        window.location.href = "/adminviewpolicy"
+       
     }
     cancel() {
         this.props.history.push("/adminviewpolicy")
@@ -79,26 +120,30 @@ class addPolicy extends Component{
 
                                     <div className="form-group">
                                         <label>Policy Name</label>
-                                        <input placeholder="Policy Name" name="policyname" className="form-control"
+                                        <input placeholder="Policy Name"  name="policyname" className="form-control"
                                             value={this.state.policyName} onChange={this.changePolicyName} />
+                                         <div  className='errorMsg'>{this.state.errors.policyName}</div><br></br>
                                     </div>
 
                                     <div className="form-group">
                                         <label>Age Group</label>
                                         <input placeholder="Age Group" name="agegroup" type="number" className="form-control"
                                             value={this.state.ageGroup} onChange={this.changeAgeGroup} />
+                                            <div  className='errorMsg'>{this.state.errors.ageGroup}</div><br></br>
                                     </div>
 
                                     <div className="form-group">
                                         <label>Policy Term</label>
                                         <input placeholder="Policy Term" name="policyterm" type="number" className="form-control"
                                             value={this.state.policyTerm} onChange={this.changePolicyTerm} />
+                                            <div  className='errorMsg'>{this.state.errors.policyTerm}</div><br></br>
                                     </div>
 
                                     <div className="form-group">
                                         <label>Policy Base Amount</label>
                                         <input placeholder="Policy Base Amount" type="number" name="baseamount" className="form-control"
                                             value={this.state.baseAmount} onChange={this.changeBaseAmount} />
+                                            <div  className='errorMsg'>{this.state.errors.baseAmount}</div><br></br>
 
                                     </div>
 
@@ -106,6 +151,7 @@ class addPolicy extends Component{
                                         <label>Policy Cover</label>
                                         <input placeholder="Policy Cover" type="number" name="policycover" className="form-control"
                                             value={this.state.policyCover} onChange={this.changePolicyCover} />
+                                            <div  className='errorMsg'>{this.state.errors.policyCover}</div><br></br>
                                     </div>
 
                                     <button className="btn btn-success" onClick={this.savePolicy}>Save</button>
