@@ -1,5 +1,6 @@
 const initialState={
-    customer:[]
+    customer:[],
+    policyDetails:[]
 }
 export default function ItemReducer(state=initialState,action){
     switch(action.type){
@@ -8,10 +9,13 @@ export default function ItemReducer(state=initialState,action){
                 ...state,
                 customer:action.customer
             };
+            case 'RENEW_POLICY_SUCCESS':
+            return{
+                    ...state,
+                    policyDetails:action.policyDetails
+            };
             default:
                 return state
         }
         
-        
-
 };

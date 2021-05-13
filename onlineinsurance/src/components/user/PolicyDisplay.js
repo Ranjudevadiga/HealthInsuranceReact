@@ -7,21 +7,20 @@ class PolicyDisplay extends Component{
     constructor(props)
     {
         super(props)
-      //  this.buy=this.buy.bind(props);
+        this.buy=this.buy.bind(props);
         this.viewPurchased=this.viewPurchased.bind(props);
     }
-    viewPurchased=()=>{
+    viewPurchased=(customerId)=>{
         let login=this.props.login
-        window.location.href="/viewbought?Id=/"+64;
+        window.location.href="/viewPurchasedPolicy?Id=/"+customerId;
     }
     buy=(policyId,customerId)=>{
-        console.log(policyId);
        
         let payload={
             customerId:customerId,
             policyId:policyId
         }
-        console.log(payload.customerId);
+       
         this.props.PolicyAction.buyPolicies(payload);
     }
     logout(){
@@ -34,6 +33,7 @@ class PolicyDisplay extends Component{
     
     render(){
         let login=this.props.login;
+       
         return(
             <Fragment>
                 <h2 align="center">Policy List</h2>
@@ -71,7 +71,7 @@ class PolicyDisplay extends Component{
                                            <button style={{marginLeft:"5px"}} type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-minus"></span>Remove</button>
                                            
                                         </Fragment>:<Fragment>
-                                 <button type="button" className="btn btn-primary btn-sm" /*onClick={()=>this.buy(pol.policyId,login.customerId)}*/>  
+                                 <button type="button" className="btn btn-primary btn-sm" onClick={()=>this.buy(pol.policyId,login.customerId)}>  
                                 
                                                 <span className="glyphicon glyphicon-shopping-cart">  
                                         </span> <b> Buy Now </b>  </button>
@@ -86,7 +86,7 @@ class PolicyDisplay extends Component{
                     </tbody>
                 </table>
                 <button className="btn btn-warning" onClick={this.logout}>Log out</button>
-                <button className="btn btn-warning" onClick={this.viewPurchased}>Purchased policies</button>
+                <button className="btn btn-warning" onClick={()=>this.viewPurchased(login.customerId)}>Purchased policies</button>
             </Fragment>
         );
     }

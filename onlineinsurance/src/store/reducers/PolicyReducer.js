@@ -42,7 +42,7 @@ export default function LoginReducer(state=initialState,action){
                 ...state,
                 editpolicy : 'edited'
             }
-        
+       
 
      default:
                 return state;
