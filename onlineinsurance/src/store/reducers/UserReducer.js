@@ -2,7 +2,7 @@ const initialState={
     customer:[],
     policyDetails:[]
 }
-export default function ItemReducer(state=initialState,action){
+export default function UserReducer(state=initialState,action){
     switch(action.type){
         case 'GET_ALL_CUSTOMER_SUCCESS':
             return{

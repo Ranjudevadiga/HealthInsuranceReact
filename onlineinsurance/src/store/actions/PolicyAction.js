@@ -17,7 +17,7 @@ export const getPolicy=()=>{
     return(dispatch)=>{
         return axios.get(POLICYURL+"/viewAllPolicies")
         .then(Response=>{
-            //localStorage.setPolicy("policies",JSON.stringify(Response.data));
+            localStorage.setItem("items",JSON.stringify(Response.data));
             console.log("api call");
        
             dispatch(getPolicySuccess(Response.data));

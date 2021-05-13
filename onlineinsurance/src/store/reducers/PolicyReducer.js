@@ -6,7 +6,7 @@ const initialState={
     
 }
 
-export default function LoginReducer(state=initialState,action){
+export default function PolicyReducer(state=initialState,action){
     switch(action.type){
         
 

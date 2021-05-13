@@ -12,7 +12,7 @@ class PolicyDisplay extends Component{
     }
     viewPurchased=(customerId)=>{
         let login=this.props.login
-        window.location.href="/viewPurchasedPolicy?Id=/"+customerId;
+        window.location.href="/viewPurchasedPolicy?Id="+customerId;
     }
     buy=(policyId,customerId)=>{
        
@@ -27,16 +27,34 @@ class PolicyDisplay extends Component{
         window.location.href="/login"
     }
     componentDidMount(){
+        let search=window.location.search;
+        let params=new URLSearchParams(search);
+        let customerId=params.get('Id')
+        if(customerId==null){
+            let login=this.props.login;
+            customerId=login.customerId;
+        }
+     
         this.props.PolicyAction.getPolicy();
+      //  this.props.PolicyAction.getBoughtPolicy(customerId);
     }
     
     
     render(){
-        let login=this.props.login;
-       
+        let search=window.location.search;
+        let params=new URLSearchParams(search);
+        let customerId=params.get('Id')
+        if(customerId==null){
+            let login=this.props.login;
+            customerId=login.customerId;
+        }
+     
+        let userlogin = window.localStorage.getItem("login");
         return(
             <Fragment>
+                <button className="btn btn-primary" style={{marginLeft:"90%"}} onClick={this.logout}>Log out</button>
                 <h2 align="center">Policy List</h2>
+                <button className="btn btn-primary" style={{marginLeft:"90%"}} onClick={()=>this.viewPurchased(customerId)}>Purchased policies</button>
                 <table className="table table-striped table-bordered">
                     
                     <thead>
@@ -65,13 +83,8 @@ class PolicyDisplay extends Component{
                                     
                                     <td>{pol.policyTerm}</td>
                                     <td>{
-                                        (login!==undefined) &&(login.role==='admin')?
-                                        <Fragment>
-                                           <button  type="button" className="btn btn-info btn-sm"><span className="glyphicon glyphicon-edit"></span> Edit</button>
-                                           <button style={{marginLeft:"5px"}} type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-minus"></span>Remove</button>
-                                           
-                                        </Fragment>:<Fragment>
-                                 <button type="button" className="btn btn-primary btn-sm" onClick={()=>this.buy(pol.policyId,login.customerId)}>  
+                                       <Fragment>
+                                 <button type="button" className="btn btn-primary btn-sm" onClick={()=>this.buy(pol.policyId,customerId)}>  
                                 
                                                 <span className="glyphicon glyphicon-shopping-cart">  
                                         </span> <b> Buy Now </b>  </button>
@@ -85,8 +98,8 @@ class PolicyDisplay extends Component{
                         }
                     </tbody>
                 </table>
-                <button className="btn btn-warning" onClick={this.logout}>Log out</button>
-                <button className="btn btn-warning" onClick={()=>this.viewPurchased(login.customerId)}>Purchased policies</button>
+                
+               
             </Fragment>
         );
     }

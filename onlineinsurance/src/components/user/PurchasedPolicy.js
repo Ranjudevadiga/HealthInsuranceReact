@@ -9,6 +9,7 @@ class PurchasedPolicy extends Component{
     {
         super(props)
         this.onRenew=this.onRenew.bind(this);
+        this.viewPolicy=this.viewPolicy.bind(this);
     }
  onRenew=(policyDetailsId,policyId,customerId)=>{
     let payload={
@@ -21,7 +22,9 @@ class PurchasedPolicy extends Component{
         }
         
     }
- 
+ viewPolicy=(customerId)=>{
+    window.location.href="/customerViewPolicy?Id="+customerId;
+ }
     logout(){
         window.location.href="/login"
     }
@@ -35,9 +38,13 @@ class PurchasedPolicy extends Component{
     }
     render(){
         let newDate = new Date();
+        let search=window.location.search;
+        let params=new URLSearchParams(search);
+        let customerId=params.get('Id')
         return(
             <body>
                 <h2 align="center">Purchased Policy</h2>
+                <button className="btn btn-primary" style={{marginLeft:"90%"}} onClick={()=>this.viewPolicy(customerId)}>View Policy List</button>
                 <table className="table table-striped table-bordered">
                     <thead>
                         <tr>
@@ -76,6 +83,7 @@ class PurchasedPolicy extends Component{
                             )}
                     </tbody>
                     </table>
+                    
             </body>
 
         )
