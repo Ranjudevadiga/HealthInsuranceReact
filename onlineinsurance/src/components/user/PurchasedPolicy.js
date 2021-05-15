@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import * as PolicyAction from '../../store/actions/PolicyAction';
 import * as UserAction from '../../store/actions/UserAction';
 import {bindActionCreators} from 'redux';
+import {Link} from 'react-router-dom';
 class PurchasedPolicy extends Component{
     
     constructor(props)
@@ -10,6 +11,7 @@ class PurchasedPolicy extends Component{
         super(props)
         this.onRenew=this.onRenew.bind(this);
         this.viewPolicy=this.viewPolicy.bind(this);
+        
     }
  onRenew=(policyDetailsId,policyId,customerId)=>{
     let payload={
@@ -22,6 +24,7 @@ class PurchasedPolicy extends Component{
         }
         
     }
+   
  viewPolicy=(customerId)=>{
     window.location.href="/customerViewPolicy?Id="+customerId;
  }
@@ -33,7 +36,12 @@ class PurchasedPolicy extends Component{
         let search=window.location.search;
         let params=new URLSearchParams(search);
         let customerId=params.get('Id')
-         console.log(customerId);
+       // if(customerId===null)
+       // {
+        //   alert("Unauthorized access");
+         //   window.location.href="/login";
+       // }
+       
         this.props.PolicyAction.getBoughtPolicy(customerId);
     }
     render(){
@@ -43,6 +51,7 @@ class PurchasedPolicy extends Component{
         let customerId=params.get('Id')
         return(
             <body>
+                 <button className="btn btn-primary" style={{marginLeft:"90%"}} onClick={this.logout}>Log out</button>
                 <h2 align="center">Purchased Policy</h2>
                 <button className="btn btn-primary" style={{marginLeft:"90%"}} onClick={()=>this.viewPolicy(customerId)}>View Policy List</button>
                 <table className="table table-striped table-bordered">
@@ -60,21 +69,21 @@ class PurchasedPolicy extends Component{
                     </thead>
                     <tbody>
                         {
-                            this.props.policyDetails.map((polDet)=>
-                            <tr key={polDet.policyDetailsId}>
-                                <td>{polDet.policyDetailsId}</td>
-                                <td>{polDet.startDate}</td>
-                                <td>{polDet.expiryDate}</td>
-                                <td>{polDet.premiumAmounts}</td>
+                            this.props.policyDetails.map((policyDetail)=>
+                            <tr key={policyDetail.policyDetailsId}>
+                                <td>{policyDetail.policyDetailsId}</td>
+                                <td>{policyDetail.startDate}</td>
+                                <td>{policyDetail.expiryDate}</td>
+                                <td>{policyDetail.premiumAmounts}</td>
                                
-                                <td>{polDet.customer.customerId}</td>
-                                <td>{polDet.policy.policyId}</td>
+                                <td>{policyDetail.customer.customerId}</td>
+                                <td>{policyDetail.policy.policyId}</td>
                                
                                 <td>{
                                    
-                                       (((newDate.getTime()-(new Date(polDet.expiryDate).getTime()))/(1000*3600*24))>=0)?
+                                       (((newDate.getTime()-(new Date(policyDetail.expiryDate).getTime()))/(1000*3600*24))>=0)?
                                          <Fragment>
-                                         <button style={{marginLeft:"5px"}}  className="btn btn-success" onClick={()=>this.onRenew(polDet.policyDetailsId,polDet.policy.policyId,polDet.customer.customerId)} >Renew</button>
+                                         <button style={{marginLeft:"5px"}}  className="btn btn-success" onClick={()=>this.onRenew(policyDetail.policyDetailsId,policyDetail.policy.policyId,policyDetail.customer.customerId)} >Renew</button>
                                          </Fragment>:<Fragment></Fragment>
     }
                                         </td>
@@ -83,7 +92,7 @@ class PurchasedPolicy extends Component{
                             )}
                     </tbody>
                     </table>
-                    
+                   
             </body>
 
         )

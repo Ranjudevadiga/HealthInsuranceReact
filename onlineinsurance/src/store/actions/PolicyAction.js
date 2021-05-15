@@ -114,12 +114,13 @@ export const editPolicy = (payload) =>{
 export const buyPolicySucces=(policy)=>{
     console.log("inside buypolicy");
     alert("Policy bought successfully");
-   // window.location.href="/viewPurchasedPolicy?Id=/"+policy.customerId;
+    window.location.href="/viewPurchasedPolicy?Id=/"+policy.customerId;
     return{
         type:'BUY_POLICY_SUCCESS'
     }
 }
 export const buyPolicies=(payload)=>{
+
     console.log("inside buy policy");
     let data={
         customerId:payload.customerId,
@@ -131,10 +132,10 @@ export const buyPolicies=(payload)=>{
             .then(Response=>{
               
                 dispatch(buyPolicySucces(Response.data));
+                
             })
             .catch(Error=>{
-                console.log("error");
-                console.log("here");
+                alert("This policy is purchased by you already");
                 throw(Error);
             });
         };

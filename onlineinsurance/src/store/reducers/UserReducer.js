@@ -9,11 +9,21 @@ export default function UserReducer(state=initialState,action){
                 ...state,
                 customer:action.customer
             };
-            case 'RENEW_POLICY_SUCCESS':
+        case 'RENEW_POLICY_SUCCESS':
             return{
                     ...state,
                     policyDetails:action.policyDetails
             };
+        case 'GET_PURCHASED_POLICY_SUCCESS':
+            return{
+                      ...state,
+                      policyDetails:action.policyDetails
+                };
+        case 'BUY_POLICY_SUCCESS':
+            return{
+                    ...state,
+                    policyDetails:action.policyDetails
+        };
             default:
                 return state
         }

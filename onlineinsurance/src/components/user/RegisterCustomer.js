@@ -36,10 +36,7 @@ registration=(it)=>{
         role:'user',
         customerId:this.state.customerId
     }
-   // PolicyService.save(customer).then(Response=>{
-     //   this.props.history.push("/register");
-      //  alert("resiterd");
-        //window.location.href="/items";
+   
         this.props.LoginAction.registerCustomer(payload);
         this.setState(initialState);
     }

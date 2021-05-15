@@ -1,8 +1,10 @@
 import React, {Component,Fragment} from 'react';
-
+import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import * as PolicyAction from '../../store/actions/PolicyAction';
+import * as UserAction from '../../store/actions/UserAction';
 import {bindActionCreators} from 'redux';
+import {Link} from 'react-router-dom';
 class PolicyDisplay extends Component{
     constructor(props)
     {
@@ -11,17 +13,14 @@ class PolicyDisplay extends Component{
         this.viewPurchased=this.viewPurchased.bind(props);
     }
     viewPurchased=(customerId)=>{
-        let login=this.props.login
         window.location.href="/viewPurchasedPolicy?Id="+customerId;
     }
     buy=(policyId,customerId)=>{
-       
         let payload={
             customerId:customerId,
             policyId:policyId
         }
-       
-        this.props.PolicyAction.buyPolicies(payload);
+        this.props.UserAction.buyPolicies(payload);
     }
     logout(){
         window.location.href="/login"
@@ -34,21 +33,23 @@ class PolicyDisplay extends Component{
             let login=this.props.login;
             customerId=login.customerId;
         }
-     
-        this.props.PolicyAction.getPolicy();
-      //  this.props.PolicyAction.getBoughtPolicy(customerId);
+        this.props.PolicyAction.getPolicy(); 
     }
     
-    
+   
     render(){
         let search=window.location.search;
         let params=new URLSearchParams(search);
-        let customerId=params.get('Id')
+        let customerId=params.get('Id');
+         let login=this.props.login;
+         
         if(customerId==null){
-            let login=this.props.login;
+           //if(login===undefined){
+             //  alert("unauthorized access");
+             //  window.location.href="/login";
+           //}
             customerId=login.customerId;
         }
-     
         let userlogin = window.localStorage.getItem("login");
         return(
             <Fragment>
@@ -78,20 +79,21 @@ class PolicyDisplay extends Component{
                                     <td>{pol.ageGroup}</td>
                                     <td>{pol.baseAmount}</td>
                                     <td>{pol.policyCover}</td>
-                                    
-                                    
-                                    
                                     <td>{pol.policyTerm}</td>
                                     <td>{
+                                      
                                        <Fragment>
-                                 <button type="button" className="btn btn-primary btn-sm" onClick={()=>this.buy(pol.policyId,customerId)}>  
+                                           <button type="button" className="btn btn-primary btn-sm" onClick={()=>this.buy(pol.policyId,customerId)}>  
                                 
                                                 <span className="glyphicon glyphicon-shopping-cart">  
                                         </span> <b> Buy Now </b>  </button>
-                                        </Fragment>}
-                                                                            </td>
-                                                                            
-
+                                        </Fragment>
+                                      
+                                       }
+                                    </td>
+                                                                          
+                                        
+                        
                                 </tr>
                             
                                 )
@@ -113,7 +115,8 @@ function mapStateToProps(state){
 }
 function mapDispatchToProps(dispatch){
     return{
-       PolicyAction: bindActionCreators(PolicyAction,dispatch)
+       PolicyAction: bindActionCreators(PolicyAction,dispatch),
+       UserAction: bindActionCreators(UserAction,dispatch)
     };
 }
 
