@@ -61,6 +61,53 @@
     li a:hover {
       background-color: #854085;
     }
+    body {
+        font-family: "Lato", sans-serif;
+      }
+      
+      .sidenav {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        box-sizing: border-box;
+        background-color:rgba(15, 2, 15, 0.877);
+        opacity: 0.7;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+      }
+      
+      .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #ddc0c0;
+        display: block;
+        transition: 0.3s;
+      }
+      
+      .sidenav a:hover {
+        color: #f1f1f1;
+      }
+      
+      .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+      }
+      
+      @media screen and (max-height: 450px) {
+        .sidenav {padding-top: 15px;}
+        .sidenav a {font-size: 18px;}
+      }
+      .menu{
+        color: white;
+      }
     
     
     </style>
@@ -82,6 +129,7 @@
 								
 							</div>
 						</a> <!-- #branding -->
+
 					
 						
 					</div> <!-- .container -->
@@ -92,11 +140,34 @@
 				
 			</header> <!-- .site-header -->
 
-			
+			<div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="/About">About</a>
+      <a href="/services">Services</a>
+      <a href="/clients">Clients</a>
+      <a href="/contact">Contact</a>
+    </div>
+    
+    
+   
+    
+    <script>
+   function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+
+}
+
+/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  
+}
+    </script>
 			
       
       
       <ul>
+        <li> <span style="font-size:30px;cursor:pointer" class="menu" onclick="openNav()">&#9776;</span></li>
        <li><a href="/">Health Insurance</a></li>
       <li><a class="active" href="/">Home</a></li>
         <li><a href="/login">Login</a></li>

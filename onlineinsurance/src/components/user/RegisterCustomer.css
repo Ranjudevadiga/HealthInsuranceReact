@@ -87,4 +87,35 @@
 
     text-shadow:1px 1px 1px darkcyan;
 
-  }    
+  } 
+  .user{
+    background-size: cover;
+    height: 100vh;
+    background-image: url(https://static.vecteezy.com/system/resources/previews/000/542/795/non_2x/vector-illustration-in-concept-of-health-insurance-template-design-is-on-pastel-blue-background-in-3d-paper-cut-style.jpg);
+  }   
+  .user .btn {
+    top:10%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+  
+    font-size: 1.5rem; 
+    cursor: pointer;
+    text-align: center;   
+    text-decoration: none;
+    outline: none;
+    color: rgb(7, 7, 7);
+    background-color:transparent;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+    width:200px;
+  }
+  
+  .user .btn:hover {background-color:  #361f60}
+  
+  .user .btn:active {
+    background-color: #1a133a;
+    box-shadow: 0 5px rgb(175, 173, 173);
+    transform: translateY(4px);
+  }

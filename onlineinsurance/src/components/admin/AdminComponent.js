@@ -15,15 +15,15 @@ render(){
     }
     return(
         <body>
-        <div>
+        <div class="admin-clas">
         <h2>Welcome Administrator!!</h2>
         <Link to="/adminviewpolicy">
-            <button className="btn btn-info">View Policies</button>
+            <button className="btn ">View Policies</button>
         </Link> &nbsp;
         <Link to="/viewcustomers">
-            <button className="btn btn-info">View customers</button>
+            <button className="btn">View customers</button>
         </Link>
-                <button className="btn btn-warning" id="bt" onClick={this.logout}>Logout</button>
+                <button className="btn" id="bt" onClick={this.logout}>Logout</button>
                             
             </div>
         </body>

@@ -14,14 +14,20 @@ import addPolicy from './components/admin/addPolicy';
 import ViewCustomer from './components/admin/ViewCustomer';
 import AdminUpdatePolicy from './components/admin/AdminUpdatePolicy'
 import PurchasedPolicy from './components/user/PurchasedPolicy'
+import Services from './components/Services';
+import Contact from './components/Contact';
+
 function App() { 
   return (
     <div className="App">
      
       <Router>
       <Switch>
+
       <Route path="/" exact component={Welcome}></Route>
-      <Route path="/About" exact component={AboutUs}></Route>   
+      <Route path="/About" exact component={AboutUs}></Route> 
+      <Route path="/services" exact component={Services}></Route>  
+      <Route path="/contact" exact component={Contact}></Route>
       <Route path="/login" exact component={Login}></Route>
       <Route path="/admin" exact component={AdminComponent}></Route>
       <Route path="/user" exact component={UserComponent}></Route>

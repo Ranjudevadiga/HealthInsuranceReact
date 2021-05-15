@@ -86,7 +86,7 @@ export const addCustDetails=(payload)=>{
     let data={
         isDiabetic:payload.isDiabetic,
         isSmoker:payload.isSmoker,
-        isAlcoholict:payload.isAlcoholic,
+        isAlcoholic:payload.isAlcoholic,
         bodyMassIndex:payload.bodyMassIndex,
         age:payload.age,
         salaryBracket:payload.salaryBracket,

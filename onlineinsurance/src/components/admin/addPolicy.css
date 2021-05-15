@@ -5,3 +5,31 @@
 
 
   }
+  .admin-clas{
+    height: 100vh;
+    background-size: cover;
+    background-image: url(http://i.imgur.com/IGlBYaC.jpg);
+}
+.admin-clas h2{
+    box-sizing: border-box;
+    font-size: 5rem;
+    text-align: center;
+    line-height: 300px;
+    color: white;
+}
+.admin-clas .btn {
+    cursor: pointer; 
+    border: 1px solid #3498db; 
+    top:70%;
+    background-color: transparent; 
+    height: 40px; 
+    text-align: center;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    width: 200px; 
+    color: #3498db; 
+    font-size: 1.5rem; 
+    font-weight: bold;
+    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+}
