@@ -11,6 +11,11 @@ class PolicyDisplay extends Component{
         super(props)
         this.buy=this.buy.bind(props);
         this.viewPurchased=this.viewPurchased.bind(props);
+        if(sessionStorage.getItem("userId")==undefined)
+        {
+           
+            window.location.href="/login";
+        }
     }
     viewPurchased=(customerId)=>{
         window.location.href="/viewPurchasedPolicy?Id="+customerId;
@@ -23,16 +28,13 @@ class PolicyDisplay extends Component{
         this.props.UserAction.buyPolicies(payload);
     }
     logout(){
+        sessionStorage.removeItem("userId");
+        
         window.location.href="/login"
+
     }
     componentDidMount(){
-        let search=window.location.search;
-        let params=new URLSearchParams(search);
-        let customerId=params.get('Id')
-        if(customerId==null){
-            let login=this.props.login;
-            customerId=login.customerId;
-        }
+        
         this.props.PolicyAction.getPolicy(); 
     }
     
@@ -48,14 +50,15 @@ class PolicyDisplay extends Component{
              //  alert("unauthorized access");
              //  window.location.href="/login";
            //}
-            customerId=login.customerId;
+            customerId=sessionStorage.getItem("userId");;
         }
         let userlogin = window.localStorage.getItem("login");
         return(
-            <Fragment>
-                <button className="btn btn-primary" style={{marginLeft:"90%"}} onClick={this.logout}>Log out</button>
+            <div >
+                <button className="logout" style={{marginLeft:"90%"}} onClick={this.logout}><i class="fa fa-sign-out"></i> Logout</button>
                 <h2 align="center">Policy List</h2>
-                <button className="btn btn-primary" style={{marginLeft:"90%"}} onClick={()=>this.viewPurchased(customerId)}>Purchased policies</button>
+                <button className="renew float-right" style={{marginLeft:"80%",marginTop:"6px"}} onClick={()=>this.viewPurchased(customerId)}>Purchased policies</button>
+                <Link to="/user"><button className="renew"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></Link>
                 <table className="table table-striped table-bordered">
                     
                     <thead>
@@ -83,7 +86,7 @@ class PolicyDisplay extends Component{
                                     <td>{
                                       
                                        <Fragment>
-                                           <button type="button" className="btn btn-primary btn-sm" onClick={()=>this.buy(pol.policyId,customerId)}>  
+                                           <button type="button" className="renew" onClick={()=>this.buy(pol.policyId,customerId)}>  
                                 
                                                 <span className="glyphicon glyphicon-shopping-cart">  
                                         </span> <b> Buy Now </b>  </button>
@@ -102,7 +105,7 @@ class PolicyDisplay extends Component{
                 </table>
                 
                
-            </Fragment>
+            </div>
         );
     }
 }

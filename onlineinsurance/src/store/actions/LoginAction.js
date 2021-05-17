@@ -5,7 +5,7 @@ const LOGINURL="http://localhost:8081/customer";
 export const loginSuccess=(login)=>{
 
     console.log("inside loginsuccess method");
-    console.log(login);
+   
     return{
         type:'LOGIN_SUCCESS',login
     }
@@ -16,14 +16,21 @@ export const loginValidate=(payload)=>{
         emailId:payload.emailId,
         password:payload.password
    }
-    console.log(data.emailId);
+   
     return (dispatch)=>{
         return axios.post(LOGINURL+"/validate",data)
         
         .then(Response=>{
           
            localStorage.setItem("login",JSON.stringify(Response.data));
-            console.log("api call");
+           if(Response.data.role==='admin'){
+            sessionStorage.setItem("adminId",Response.data.customerId);
+           }
+           else{
+           sessionStorage.setItem("userId",Response.data.customerId);
+           sessionStorage.setItem("username",Response.data.firstName);
+           }
+            
             dispatch(loginSuccess(Response.data));
 
         })
@@ -93,7 +100,7 @@ export const addCustDetails=(payload)=>{
         customerId:payload.customerId
 
     }
-    console.log(data.customerId);
+    
     return(dispatch)=>{
         return axios.post(LOGINURL+"/addCustomerDetail",data)
         .then(Response=>{
@@ -102,7 +109,7 @@ export const addCustDetails=(payload)=>{
         })
         .catch(Error=>{
             console.log("error");
-            console.log("here");
+            
             throw(Error);
         });
     };

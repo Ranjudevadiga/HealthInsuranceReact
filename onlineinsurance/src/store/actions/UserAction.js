@@ -3,7 +3,7 @@ const CUSTOMERURL="http://localhost:8081/admin";
 const POLICYURL="http://localhost:8081/customer";
 export const getCustomerSuccess=(customer)=>{
     console.log("inside get customer success");
-    console.log(customer);
+  
     return{
         type:'GET_ALL_CUSTOMER_SUCCESS',customer
     }
@@ -13,8 +13,7 @@ export const getCustomer=() =>{
     return(dispatch)=>{
         return axios.get(CUSTOMERURL+"/viewAllCustomer")
         .then(Response =>{
-            //localStorage.setCustomer("customer",JSON.stringify(Response.data));
-            console.log("api call");
+           
             dispatch(getCustomerSuccess(Response.data));
         })
         .catch(Error=>{
@@ -37,7 +36,7 @@ export const renewPolicy=(payload)=>{
         policyId:payload.policyId,
         customerId:payload.customerId
         }
-        console.log(data.customerId);
+       
     return(dispatch)=>{
       return  axios.put(POLICYURL+"/renewPolicy",data)
       .then(Response=>{
@@ -52,7 +51,7 @@ export const renewPolicy=(payload)=>{
 export const buyPolicySucces=(policy)=>{
     console.log("inside buypolicy");
     alert("Policy bought successfully");
-    window.location.href="/viewPurchasedPolicy?Id=/"+policy.customerId;
+    window.location.href="/viewPurchasedPolicy?Id="+policy.customerId;
     return{
         type:'BUY_POLICY_SUCCESS'
     }
@@ -64,7 +63,7 @@ export const buyPolicies=(payload)=>{
         customerId:payload.customerId,
         policyId:payload.policyId
         }
-       console.log(data.customerId);
+      
         return(dispatch)=>{
             return axios.post(POLICYURL+"/buyPolicy",data)
             .then(Response=>{

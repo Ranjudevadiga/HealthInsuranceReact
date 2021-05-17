@@ -8,12 +8,18 @@ class AdminPolicyDisplay extends Component{
     {
         super(props)
         this.addPolicy=this.addPolicy.bind(this);
+        if(sessionStorage.getItem("adminId")==undefined)
+        {
+           
+            window.location.href="/login";
+        }
     }
     addPolicy=()=>{
         window.location.href="/add-Policy"
     }
     logout(){
-        window.location.href="/login"
+        sessionStorage.removeItem("adminId");
+        window.location.href="/login";
     }
     componentDidMount(){
         this.props.PolicyAction.getPolicy();
@@ -28,7 +34,19 @@ class AdminPolicyDisplay extends Component{
         let login=this.props.login;
         return(
             <Fragment>
-                 <button className="btn btn-warning"style={{marginLeft:"90%"}} onClick={this.logout}>Log out</button>
+                <div class="dropdown">
+                 <button style={{marginLeft:"85%",backgroundColor:'white',color:'black' ,height:"40px",boxShadow:'0 6px 6px'}}  type="button" id="menu1" data-toggle="dropdown"><span className="glyphicon glyphicon-user"></span> Profile
+                   <span class="caret"></span></button>
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="menu1">
+                        <Link to="/login" >
+                      <li role="presentation" ><a role="menuitem"  tabindex="0"style={{color:'black'}} ><span className="glyphicon glyphicon-log-out"></span> Logout</a></li><br></br>
+                      </Link>
+                      <Link to="/admin">
+                      <li role="presentation"><a role="menuitem"  tabindex="0" style={{color:'black'}}><span className="glyphicon glyphicon-home"></span> Admin Page</a></li>
+                      </Link>
+                        </ul>
+               </div>
+                 
                 <h2 align="center">Policy List</h2>
                
                 <table className="table table-striped table-bordered">
@@ -71,8 +89,8 @@ class AdminPolicyDisplay extends Component{
                         }
                     </tbody>
                 </table>
-                <Link to="/add-Policy"><button className="btn btn-info" onClick={this.addPolicy}>Add Policy</button></Link>
-                <Link to="/admin"><button className="btn btn-info">Back to admin page</button></Link>
+                <Link to="/add-Policy"><button className="btn" onClick={this.addPolicy}>Add Policy</button></Link>
+               
             </Fragment>
         );
     }

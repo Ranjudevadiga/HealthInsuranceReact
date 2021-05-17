@@ -18,7 +18,7 @@ export const getPolicy=()=>{
         return axios.get(POLICYURL+"/viewAllPolicies")
         .then(Response=>{
             localStorage.setItem("items",JSON.stringify(Response.data));
-            console.log("api call");
+          
        
             dispatch(getPolicySuccess(Response.data));
         })
@@ -43,7 +43,7 @@ return(dispatch)=>{
     return axios.delete(POLICYADMURL+"/deletePolicy/"+policyId)
     .then(Response=>{
         localStorage.setItem("items",JSON.stringify(Response.data));
-        console.log("api call");
+        
    
         dispatch(policyDeleteSuccess(Response.data));
     })
@@ -102,7 +102,7 @@ export const editPolicy = (payload) =>{
     return (dispatch)=> {
         return axios.put(POLICYADMURL+"/updatePolicy",item)
         .then(Response => {
-            console.log("api call");
+            
             dispatch(editPolicySuccess());
         })
         .catch(Error=> {
@@ -126,7 +126,7 @@ export const buyPolicies=(payload)=>{
         customerId:payload.customerId,
         policyId:payload.policyId
         }
-       console.log(data.customerId);
+   
         return(dispatch)=>{
             return axios.post(POLICYURL+"/buyPolicy",data)
             .then(Response=>{
@@ -153,13 +153,13 @@ return(dispatch)=>{
     return axios.get(POLICYURL+"/getAllPolicydetails/"+customerId)
     .then(Response=>{
         
-        console.log("api call");
+       
    
         dispatch(getBoughtPolicyDetailsSuccess(Response.data));
     })
     .catch(Error=>{
         console.log("error");
-        console.log("here");
+        
         throw(Error);
     });
 };

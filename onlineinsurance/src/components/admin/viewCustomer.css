@@ -1,4 +1,4 @@
-.customer-table table { 
+/*.customer-table table { 
 	width: 750px; 
 	border-collapse: collapse; 
 	margin:50px auto;
@@ -22,7 +22,63 @@
 	border: 1px solid #ccc; 
 	text-align: left; 
 	font-size: 18px;
-	}
+	}*/
+    .view  {
+        height: 100%;
+    }
+    
+    .view  {
+        margin: 0;
+        background: linear-gradient(45deg, #49a09d, #d4cfd8);
+        font-family: sans-serif;
+        font-weight: 100;
+    }
+    .viewcust h1{
+        text-align: center;
+    }
+    /*.viewcust .container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }*/
+    
+    .viewcust .customer-table {
+        width: 800px;
+        border-collapse: collapse;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    
+    .customer-table th,
+    td {
+        padding: 15px;
+        background-color: rgba(255,255,255,0.2);
+        color: rgb(0, 0, 0);
+    }
+    
+    /*.customer-table th {
+     */
+    .customer-table tbody tr:hover{
+        background-color:rgba(255,255,255,0.3);
+    }
+    .view .viewbtn{cursor: pointer; 
+        border: 1px solid #3498db; 
+       
+        background-color: transparent; 
+        height: 40px; 
+        text-align: center;
+         justify-content: center;
+        width: 200px; 
+        color: #040224; 
+        font-size: 1.5rem; 
+        font-weight: bold;
+        box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+
+    }
+    
+   
+    
     #AdminUpdatePolicy .form-group{
         width:300px;
         align-self: center;

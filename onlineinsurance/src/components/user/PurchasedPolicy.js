@@ -11,6 +11,11 @@ class PurchasedPolicy extends Component{
         super(props)
         this.onRenew=this.onRenew.bind(this);
         this.viewPolicy=this.viewPolicy.bind(this);
+        if(sessionStorage.getItem("userId")==undefined)
+        {
+           
+            window.location.href="/login";
+        }
         
     }
  onRenew=(policyDetailsId,policyId,customerId)=>{
@@ -29,7 +34,9 @@ class PurchasedPolicy extends Component{
     window.location.href="/customerViewPolicy?Id="+customerId;
  }
     logout(){
+        sessionStorage.removeItem("userId");
         window.location.href="/login"
+
     }
 
     componentDidMount(){
@@ -51,9 +58,9 @@ class PurchasedPolicy extends Component{
         let customerId=params.get('Id')
         return(
             <body>
-                 <button className="btn btn-primary" style={{marginLeft:"90%"}} onClick={this.logout}>Log out</button>
+                 <button className="logout" style={{marginLeft:"90%"}} onClick={this.logout}><i class="fa fa-sign-out"></i> Logout</button>
                 <h2 align="center">Purchased Policy</h2>
-                <button className="btn btn-primary" style={{marginLeft:"90%"}} onClick={()=>this.viewPolicy(customerId)}>View Policy List</button>
+                <button className="renew" style={{marginLeft:"90%"}} onClick={()=>this.viewPolicy(customerId)}>View Policy</button>
                 <table className="table table-striped table-bordered">
                     <thead>
                         <tr>
@@ -83,7 +90,7 @@ class PurchasedPolicy extends Component{
                                    
                                        (((newDate.getTime()-(new Date(policyDetail.expiryDate).getTime()))/(1000*3600*24))>=0)?
                                          <Fragment>
-                                         <button style={{marginLeft:"5px"}}  className="btn btn-success" onClick={()=>this.onRenew(policyDetail.policyDetailsId,policyDetail.policy.policyId,policyDetail.customer.customerId)} >Renew</button>
+                                         <button style={{marginLeft:"5px"}} className="renew"  onClick={()=>this.onRenew(policyDetail.policyDetailsId,policyDetail.policy.policyId,policyDetail.customer.customerId)} ><i class="fa fa-refresh" aria-hidden="true"></i> Renew</button>
                                          </Fragment>:<Fragment></Fragment>
     }
                                         </td>

@@ -16,6 +16,11 @@ class AdminUpdatePolicy extends Component {
             policyCover : props.location.state.pol.policyCover,
             errors:{}
         }
+        if(sessionStorage.getItem("adminId")==undefined)
+        {
+           
+            window.location.href="/login";
+        }
     }
     componentDidMount(){
         console.log(this.props.location.state);
