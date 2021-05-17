@@ -38,7 +38,7 @@ render(){
                  <span class="caret"></span></button>
                   <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="menu1">
                       <Link to="/login" >
-                    <li role="presentation" ><a role="menuitem"  tabindex="0"style={{color:'black'}} ><span className="glyphicon glyphicon-log-out"></span> Logout</a></li><br></br>
+                    <li role="presentation" ><a role="menuitem"  tabindex="0"style={{color:'black'}} ><span className="glyphicon glyphicon-log-out" onClick={this.logout}></span> Logout</a></li><br></br>
                     </Link>
                     <Link to="/admin">
                     <li role="presentation"><a role="menuitem"  tabindex="0" style={{color:'black'}}><span className="glyphicon glyphicon-home"></span> Admin Page</a></li>
