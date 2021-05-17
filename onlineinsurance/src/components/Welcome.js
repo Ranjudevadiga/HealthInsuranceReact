@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import homepage from './images/homepage.jpg'
+
+import homepageee from './images/homepageee.jpg'
 
 class Welcome extends Component{
 render(){
@@ -17,7 +20,7 @@ render(){
     <div class="carousel-inner">
 
       <div class="item active">
-        <img src="images/Health-insurance-min_1.jpg" alt="Los Angeles"></img>
+        <img src={homepage} alt="Los Angeles" ></img>
         <div className="box-one">
           <label>Login</label>
         <p class="change_link">
@@ -28,12 +31,12 @@ render(){
       </div>
 
       <div class="item">
-        <img src="images/Dhirendra.jpg" alt="Chicago"></img>
+        <img src='./images/Health-insurance-min_1.jpg' alt="Chicago" ></img>
         
       </div>
     
       <div class="item">
-        <img src="images/health-insurance-concept-with-words-coverage-protection-risk-and-security-HG92P3.jpg" alt="New York" ></img>
+        <img src={homepageee} alt="New York" ></img>
        
       </div>
   

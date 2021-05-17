@@ -124,6 +124,9 @@
     border-radius: 0.625rem;
     color: rgb(20, 20, 20);
   }
+  .caraousel-inner img{
+    object-fit: contain;
+  }
   
   
   

@@ -92,9 +92,9 @@ class AddCustomerDetails extends Component{
                         <div className="card-body">
                             <form>
                                 <div className="form-group">
-                                    <label>Are you Diabetic?</label>
+                                    <label style={{color:'black'}}>Are you Diabetic?</label>
                                     <br></br>
-                                    <select name="isDiabetic" onChange={this.onChange} className="form-control">
+                                    <select name="isDiabetic" onChange={this.onChange} className="form-control" style={{height:"40px"}}>
                                          <option value="Select">Select</option>
                                         <option value="yes">Yes</option>
                                         <option value="no">No</option>
@@ -104,9 +104,9 @@ class AddCustomerDetails extends Component{
    
                                 </div> 
                                 <div>   
-                                    <label>Are you smoker?</label>
+                                    <label style={{color:'black'}}>Are you smoker?</label>
                                     <br></br>
-                                    <select name="isSmoker" onChange={this.onChange} className="form-control" >
+                                    <select name="isSmoker" onChange={this.onChange} style={{height:"40px"}} className="form-control" >
                                     <option value="Select">Select</option>
                                         <option value="yes">Yes</option>
                                         <option value="no">No</option>
@@ -115,9 +115,10 @@ class AddCustomerDetails extends Component{
 
                                     </div>
                                <div>    
-                                    <label>Are you alcoholic?</label>
+                                    <label style={{color:'black'}}>Are you alcoholic?</label>
                                     <br></br>
-                                    <select name="isAlcoholic" onChange={this.onChange} className="form-control">
+                                    
+                                    <select name="isAlcoholic" onChange={this.onChange}style={{height:"40px"}} className="form-control">
                                     <option value="Select">Select</option>
                                         <option value="yes">Yes</option>
                                         <option value="no">No</option>
@@ -127,19 +128,19 @@ class AddCustomerDetails extends Component{
 
                                     </div>
                                     <div>
-                                    <label>Body Mass Index</label>
+                                    <label style={{color:'black'}}>Body Mass Index</label>
                                     <input type="number" placeholder="Enter bodymassindex" name="bodyMassIndex" value={this.state.bodyMassIndex} className="form-control" onChange={this.onChange}></input>
                                     <div  className='errorMsg'>{this.state.errors.bodyMassIndex}</div><br></br>
 
                                 </div>
                                 <div>
-                                    <label>Age</label>
+                                    <label style={{color:'black'}}>Age</label>
                                     <input type="number" placeholder="Enter Age" name="age" value={this.state.age} className="form-control" onChange={this.onChange}></input>
                                     <div  className='errorMsg'>{this.state.errors.age}</div><br></br>
 
                                 </div>
                                 <div>
-                                    <label>Salary Bracket</label>
+                                    <label style={{color:'black'}}>Salary Bracket</label>
                                     <input type="number" placeholder="Enter salaryBracket" name="salaryBracket" value={this.state.salaryBracket} className="form-control" onChange={this.onChange}></input>
                                     <div  className='errorMsg'>{this.state.errors.salaryBracket}</div><br></br>
 

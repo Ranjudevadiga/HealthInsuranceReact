@@ -6,18 +6,20 @@
 
   }
   .admin-clas{
-    height: 100vh;
-    background-size: cover;
-    background-image: url(http://i.imgur.com/IGlBYaC.jpg);
+    height: 150vh;
+    
+    background-size: contain;
+    background-image: url(https://www.iifl.com/sites/default/files/Family_Floater_mailer_700x400_1.jpg);
+    opacity: 0.7;
 }
 .admin-clas h2{
     box-sizing: border-box;
     font-size: 5rem;
     text-align: center;
     line-height: 300px;
-    color: white;
+    color: rgb(25, 8, 124);
 }
-.admin-clas .btn {
+/*.admin-clas .btn {
     cursor: pointer; 
     border: 1px solid #3498db; 
     top:70%;
@@ -32,4 +34,4 @@
     font-size: 1.5rem; 
     font-weight: bold;
     box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
-}
+}*/

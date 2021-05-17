@@ -88,7 +88,9 @@ class Login extends Component{
       </div>
       
       <button className="btn btn-success" onClick={this.validation}>Login</button>
+      
       <p class="change_link">
+          <br></br>
 					Not a member yet ?
 					<a href="/register" class="to_register"> Sign Up</a>
 				</p>
