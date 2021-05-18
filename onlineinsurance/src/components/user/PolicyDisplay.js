@@ -111,7 +111,7 @@ function mapStateToProps(state){
     return{
         policies:state.PolicyReducer.policies,
         login:state.LoginReducer.login,
-        policyDetails:state.PolicyReducer.policyDetails
+        policyDetails:state.UserReducer.policyDetails
     };
 }
 function mapDispatchToProps(dispatch){

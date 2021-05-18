@@ -44,7 +44,7 @@ class PurchasedPolicy extends Component{
         let search=window.location.search;
         let params=new URLSearchParams(search);
         let customerId=params.get('Id')
-        this.props.PolicyAction.getBoughtPolicy(customerId);
+        this.props.UserAction.getBoughtPolicy(customerId);
     }
     render(){
         let newDate = new Date();
@@ -102,13 +102,12 @@ class PurchasedPolicy extends Component{
 }
 function mapStateToProps(state){
     return{
-        policyDetails:state.PolicyReducer.policyDetails,
+        policyDetails:state.UserReducer.policyDetails,
        login:state.LoginReducer.login
     };
 }
 function mapDispatchToProps(dispatch){
     return{
-       PolicyAction: bindActionCreators(PolicyAction,dispatch),
        UserAction: bindActionCreators(UserAction,dispatch)
     };
 }
