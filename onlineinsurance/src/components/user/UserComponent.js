@@ -6,7 +6,7 @@ import CustomerLoginNav from '../CustomerLoginNav';
 class UserComponent extends Component{
     constructor(props){
         super(props)
-        if(sessionStorage.getItem("userId")===undefined)
+        if(sessionStorage.getItem("userId")==undefined)
         {
            
             window.location.href="/login";

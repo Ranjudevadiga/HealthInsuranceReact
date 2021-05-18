@@ -16,7 +16,7 @@ class AdminUpdatePolicy extends Component {
             policyCover : props.location.state.pol.policyCover,
             errors:{}
         }
-        if(sessionStorage.getItem("adminId")===undefined)
+        if(sessionStorage.getItem("adminId")==undefined)
         {
            
             window.location.href="/login";
@@ -93,42 +93,35 @@ class AdminUpdatePolicy extends Component {
            <div class="update">
                <LoginNavBar/>
                 <div class="row">
-                   <div class="col-lg-4 col-lg-offset-4">
-                    <h1>Update  Policy </h1>
-             <form >
-                <div className="form-group">
-                <label >Enter Policy Id</label>
-                    <input type="text" name="policyId" className="form-control" value={this.state.policyId} onChange={this.onChange}  readOnly></input><br></br>
-                    <label>Enter Policy Name</label>
-                    <input type="text" name="policyName" className="form-control" value={this.state.policyName} onChange={this.onChange}  required="required"></input><br></br>
-                    <div  className='errorMsg'>{this.state.errors.policyName}</div><br></br>
-
-                    <label>Enter Age Group</label>
-                    <input type="number" name="ageGroup" className="form-control" value={this.state.ageGroup} onChange={this.onChange}></input><br></br>
-                    <div  className='errorMsg'>{this.state.errors.ageGroup}</div><br></br>
-
-                    <label>Enter Policy Term</label>
-                    <input type="number" name="policyTerm" className="form-control" value={this.state.policyTerm} onChange={this.onChange}></input> <br></br>
-                    <div  className='errorMsg'>{this.state.errors.policyterm}</div><br></br>
-
-                    <label>Enter Base Amount</label>
-                    <input type="number" name="baseAmount" className="form-control" value={this.state.baseAmount} onChange={this.onChange}></input> <br></br>
-                    <div  className='errorMsg'>{this.state.errors.baseAmount}</div><br></br>
-
-                    <label>Enter Policy Cover</label>
-                    <input type="number" name="policyCover" className="form-control" value={this.state.policyCover} onChange={this.onChange}></input> <br></br>
-                    <div  className='errorMsg'>{this.state.errors.policyCover}</div><br></br>
-
-                </div>
-                    <button className="btn btn-success" onClick={this.updatePolicy}>update item</button>
-                    <Link to="/adminviewpolicy"> <button className="btn btn-danger">Cancel</button></Link> 
-                </form>
-                </div>
+                    <div class="col-lg-4 col-lg-offset-4">
+                       <h1>Update  Policy </h1>
+                        <form >
+                            <div className="form-group">
+                               <label >Enter Policy Id</label>
+                                  <input type="text" name="policyId" className="form-control" value={this.state.policyId} onChange={this.onChange}  readOnly></input><br></br>
+                               <label>Enter Policy Name</label>
+                                  <input type="text" name="policyName" className="form-control" value={this.state.policyName} onChange={this.onChange}  required="required"></input><br></br>
+                                  <div  className='errorMsg'>{this.state.errors.policyName}</div><br></br>
+                               <label>Enter Age Group</label>
+                                  <input type="number" name="ageGroup" className="form-control" value={this.state.ageGroup} onChange={this.onChange}></input><br></br>
+                                  <div  className='errorMsg'>{this.state.errors.ageGroup}</div><br></br>
+                               <label>Enter Policy Term</label>
+                                  <input type="number" name="policyTerm" className="form-control" value={this.state.policyTerm} onChange={this.onChange}></input> <br></br>
+                                  <div  className='errorMsg'>{this.state.errors.policyterm}</div><br></br>
+                               <label>Enter Base Amount</label>
+                                  <input type="number" name="baseAmount" className="form-control" value={this.state.baseAmount} onChange={this.onChange}></input> <br></br>
+                                  <div  className='errorMsg'>{this.state.errors.baseAmount}</div><br></br>
+                               <label>Enter Policy Cover</label>
+                                  <input type="number" name="policyCover" className="form-control" value={this.state.policyCover} onChange={this.onChange}></input> <br></br>
+                                   <div  className='errorMsg'>{this.state.errors.policyCover}</div><br></br>
+                            </div>
+                         <button className="btn btn-success" onClick={this.updatePolicy}>update item</button>
+                         <Link to="/adminviewpolicy"> <button className="btn btn-danger">Cancel</button></Link> 
+                        </form>
+                    </div>
                 </div> 
-                </div>
-           
-    );
-
+            </div>         
+        );
     }
 }
 function mapStateToProps(state) {
@@ -142,4 +135,4 @@ function mapStateToProps(state) {
      PolicyAction : bindActionCreators(PolicyAction, dispatch)
       };
    }
-   export default connect(mapStateToProps,mapDispatchToProps)(AdminUpdatePolicy);
+export default connect(mapStateToProps,mapDispatchToProps)(AdminUpdatePolicy);

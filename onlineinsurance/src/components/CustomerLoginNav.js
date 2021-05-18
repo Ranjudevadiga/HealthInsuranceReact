@@ -1,7 +1,7 @@
 import React,{ Component,Redirect } from 'react';
 import{Navbar,Nav,NavDropdown} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
-export default class HomeNavBar extends Component{
+export default class CustomerLoginNav extends Component{
     logout(){
         sessionStorage.removeItem("userId");
         window.location.href="/login";
@@ -19,7 +19,7 @@ export default class HomeNavBar extends Component{
                  <button style={{backgroundColor:'white', color:'rgb(38, 4, 44)' ,height:"40px",boxShadow:'0 6px 6px',width:'10rem'}}  type="button" id="menu1" data-toggle="dropdown"><span className="glyphicon glyphicon-user"></span> Profile
                    <span class="caret"></span></button>
                     <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="menu1">
-                        <Link to="/login" >
+                        <Link to="/login">
                       <li role="presentation" ><a role="menuitem"  onClick={this.logout} tabindex="0"style={{color:'black'}} onClick={this.logout} ><span className="glyphicon glyphicon-log-out" ></span> Logout</a></li><br></br>
                       </Link>
                       <Link to="/user">
@@ -35,12 +35,6 @@ export default class HomeNavBar extends Component{
       </Nav>
   </Navbar.Collapse>
 </Navbar>
-                  
-            
-            
-           
-            
-         
             
             </div>   
             

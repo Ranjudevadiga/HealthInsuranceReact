@@ -25,7 +25,7 @@ class addPolicy extends Component{
 
         this.savePolicy = this.savePolicy.bind(this);
         this.listOfPolicies = this.savePolicy.bind(this);
-        if(sessionStorage.getItem("adminId")===undefined)
+        if(sessionStorage.getItem("adminId")==undefined)
         {
            
             window.location.href="/login";

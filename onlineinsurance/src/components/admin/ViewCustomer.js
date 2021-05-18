@@ -11,7 +11,7 @@ import LoginNavBar from '../LoginNavBar';
 class ViewCustomer extends Component{
 constructor(props){
     super(props)
-    if(sessionStorage.getItem("adminId")===undefined)
+    if(sessionStorage.getItem("adminId")==undefined)
         {
            
             window.location.href="/login";
@@ -27,42 +27,35 @@ constructor(props){
     }
 
 render(){
-    let stock=this.props.customer;
-    
+    let stock=this.props.customer;    
   return(
     <body class="view">
         <LoginNavBar/>
-    <div class="viewcust"> 
-        <h1>CUSTOMER</h1>
-        <table className="customer-table" align="center" width="50%">
-            
-            <thead>
-                <tr>
-                    <th>FIRST NAME</th>
-                    <th>LAST NAME</th>
-                    <th>EMAIL ID</th>
-                </tr>
-            </thead>
-            <tbody>
-                {
-                    
-                    stock.map(customer=>
-                      (customer.role==='user')?
-                     <tr key={customer.customerId}align="center">
-                     
-                     
-                         <td>{customer.firstName}</td>
-                         <td>{customer.lastName}</td>
-                         <td>{customer.emailId}</td>       
-                     </tr>:<tr></tr>
-                     
-
-                      )}
-                       
-              </tbody>
-        </table><br></br>
-   </div>
-   </body>
+        <div class="viewcust"> 
+            <h1>CUSTOMER</h1>
+            <table className="customer-table" align="center" width="50%">            
+                <thead>
+                    <tr>
+                      <th>FIRST NAME</th>
+                      <th>LAST NAME</th>
+                      <th>EMAIL ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   { 
+                       stock.map(customer=>
+                         (customer.role==='user')?
+                            <tr key={customer.customerId}align="center">
+                               <td>{customer.firstName}</td>
+                               <td>{customer.lastName}</td>
+                               <td>{customer.emailId}</td>       
+                            </tr>:<tr></tr>
+                      )
+                    }      
+                </tbody>
+            </table><br></br>
+        </div>
+    </body>
   );
 }
 }

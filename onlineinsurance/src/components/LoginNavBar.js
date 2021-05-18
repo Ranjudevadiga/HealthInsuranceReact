@@ -1,7 +1,7 @@
 import React,{ Component,Redirect } from 'react';
 import{Navbar,Nav,NavDropdown} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
-export default class HomeNavBar extends Component{
+export default class LoginNavBar extends Component{
   logout(){
     sessionStorage.removeItem("adminId");
     window.location.href="/login";

@@ -9,7 +9,7 @@ class AdminPolicyDisplay extends Component{
     {
         super(props)
         this.addPolicy=this.addPolicy.bind(this);
-        if(sessionStorage.getItem("adminId")===undefined)
+        if(sessionStorage.getItem("adminId")==undefined)
         {
            
             window.location.href="/login";
@@ -36,12 +36,8 @@ class AdminPolicyDisplay extends Component{
         return(
            <div class="policy-display">
                 <LoginNavBar/>
-                
-               
                 <h2 align="center">Policy List</h2>
-               
                 <table className="table table-striped table-bordered">
-                    
                     <thead>
                         <tr>
                             <th>Policy Id</th>
@@ -64,24 +60,19 @@ class AdminPolicyDisplay extends Component{
                                     <td>{pol.policyCover}</td>
                                     <td>{pol.policyTerm}</td>
                                     <td>{
-                                       <Fragment>
-                                        
-                                        <Link to ={{pathname: '/edit-policy',state:{pol}}}> <button style={{marginLeft:"5px"}} type="button" className="btn btn-success btn-sm"><span className="glyphicon glyphicon-edit"></span></button></Link>
-                                          
-                                         <button style={{marginLeft:"5px"}}  className="btn btn-danger" onClick={()=>this.onDeletePost(pol.policyId)}><i className="fa fa-trash" aria-hidden="true"></i></button>
-                                         </Fragment>
-    }
-                                        </td>
-                                                                            
-
-                                </tr>
-                            
+                                       <Fragment>                       
+                                           <Link to ={{pathname: '/edit-policy',state:{pol}}}> <button style={{marginLeft:"5px"}} type="button" className="btn btn-success btn-sm"><span className="glyphicon glyphicon-edit"></span></button></Link>
+                                           <button style={{marginLeft:"5px"}}  className="btn btn-danger" onClick={()=>this.onDeletePost(pol.policyId)}><i className="fa fa-trash" aria-hidden="true"></i></button>
+                                        </Fragment>
+                                    }
+                                    </td>
+                                </tr>                         
                                 )
                         }
                     </tbody>
                 </table>
                 <Link to="/add-Policy"><button className="btn" onClick={this.addPolicy}>Add Policy</button></Link>
-                </div>
+            </div>
           
               
            
