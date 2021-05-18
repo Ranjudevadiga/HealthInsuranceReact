@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import * as LoginAction from '../../store/actions/LoginAction';
 import {bindActionCreators} from 'redux';
 import './RegisterCustomer.css'
-import HomeNavBar from '../../HomeNavBar';
 const initialState={
     firstName:'',
     lastName:'',
@@ -37,7 +36,6 @@ registration=(it)=>{
         role:'user',
         customerId:this.state.customerId
     }
-   
         this.props.LoginAction.registerCustomer(payload);
         this.setState(initialState);
     }
@@ -97,9 +95,8 @@ onChange=(seg)=>this.setState({[seg.target.name]:seg.target.value});
     render(){
    
         return(
-        
+           
             <div>
-                   <HomeNavBar/>
                 <br></br>
                 <div className="SignUp">
                 <div class="box">
@@ -121,7 +118,7 @@ onChange=(seg)=>this.setState({[seg.target.name]:seg.target.value});
                      <div className='errorMsg'>{this.state.errors.password}</div>
                      
                     <input type="hidden"  name="customerId" id="customerId" value="" ></input>
-                    </div>   <br></br> <br></br>          
+                    </div>              
                   <button className="btn btn-success" onClick={this.registration}>Save</button>
                  </form>
                 </div>

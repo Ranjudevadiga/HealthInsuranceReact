@@ -73,9 +73,9 @@ let data={
         .then(Response=>{
             dispatch(createPolicySuccess(Response.data));
         })
-        .catch(Error=>{
-            console.log("error");
-            throw(Error);
+        .catch(error=>{
+            alert(error.response.data);
+            throw(error);
         });
 
     };

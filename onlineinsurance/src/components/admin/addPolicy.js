@@ -25,7 +25,7 @@ class addPolicy extends Component{
 
         this.savePolicy = this.savePolicy.bind(this);
         this.listOfPolicies = this.savePolicy.bind(this);
-        if(sessionStorage.getItem("adminId")==undefined)
+        if(sessionStorage.getItem("adminId")===undefined)
         {
            
             window.location.href="/login";
@@ -45,6 +45,11 @@ class addPolicy extends Component{
             formIsValid = false
             errors['policyName'] = '*Please enter Policy name'
         }
+        else if(this.state.policyName.length>30)
+        {
+            formIsValid=false
+            errors['policyName'] = '*Please enter Policy name within 30 character'
+        }
         if(!this.state.ageGroup)
         {
             formIsValid = false
@@ -53,12 +58,22 @@ class addPolicy extends Component{
         else  if(!this.state.ageGroup.match("^[0-9]")){
             formIsValid = false;
             errors['ageGroup'] = '*Please Enter Only Numbers ';
-         }  
+         } 
+         else if(this.state.ageGroup>60)
+         {
+             formIsValid=false
+             errors['ageGroup'] = '*Please enter Age group less than 60';
+         } 
         if(!this.state.policyTerm)
         {
             formIsValid = false
             errors['policyTerm'] = '*Please enter  Policy Term'
         }
+        else if(this.state.policyTerm>40)
+        {
+            formIsValid=false
+            errors['policyTerm'] = '*Please enter Policy Term less than 60';
+        } 
         if(!this.state.baseAmount)
         {
             formIsValid = false

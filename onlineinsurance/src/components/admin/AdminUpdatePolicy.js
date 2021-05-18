@@ -16,7 +16,7 @@ class AdminUpdatePolicy extends Component {
             policyCover : props.location.state.pol.policyCover,
             errors:{}
         }
-        if(sessionStorage.getItem("adminId")==undefined)
+        if(sessionStorage.getItem("adminId")===undefined)
         {
            
             window.location.href="/login";
@@ -38,11 +38,21 @@ class AdminUpdatePolicy extends Component {
             formIsValid = false
             errors['ageGroup'] = '*Please Enter  Age'
         }
+        else if(this.state.ageGroup>60)
+         {
+             formIsValid=false
+             errors['ageGroup'] = '*Please enter Age group less than 60';
+         } 
         if(!this.state.policyTerm)
         {
             formIsValid = false
             errors['policyTerm'] = '*Please enter  Policy Term'
         }
+        else if(this.state.policyTerm>40)
+         {
+             formIsValid=false
+             errors['policyTerm'] = '*Please enter Age group less than 60';
+         } 
         if(!this.state.baseAmount)
         {
             formIsValid = false

@@ -1,13 +1,12 @@
 
 import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
-import {Redirect} from 'react-router-dom';
 import { connect } from 'react-redux';
 import CustomerLoginNav from '../CustomerLoginNav';
 class UserComponent extends Component{
     constructor(props){
         super(props)
-        if(sessionStorage.getItem("userId")==undefined)
+        if(sessionStorage.getItem("userId")===undefined)
         {
            
             window.location.href="/login";
@@ -19,12 +18,7 @@ class UserComponent extends Component{
     }
   
 render(){
-    let login=this.props.login;
-    //if(login===undefined){
-      //  alert("unauthorized access...please try again");
-      //  return <Redirect to="/login"></Redirect>
-       // }
-       
+   
     return(
         <body>
        <CustomerLoginNav/>

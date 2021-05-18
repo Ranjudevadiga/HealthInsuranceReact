@@ -68,8 +68,8 @@ export const registerCustomer=(payload)=>{
           
             dispatch(registrationSuccess(Response.data));
         })
-        .catch(Error=>{
-            console.log("error");
+        .catch(error=>{
+            alert(error.response.data);
             throw(Error);
         });
        

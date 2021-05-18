@@ -6,7 +6,7 @@ import LoginNavBar from '../LoginNavBar';
 class AdminComponent extends Component{
     constructor(props){
         super(props)
-        if(sessionStorage.getItem("adminId")==undefined)
+        if(sessionStorage.getItem("adminId")===undefined)
         {
            
             window.location.href="/login";

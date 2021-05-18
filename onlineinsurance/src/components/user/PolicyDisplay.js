@@ -12,7 +12,7 @@ class PolicyDisplay extends Component{
         super(props)
         this.buy=this.buy.bind(props);
         this.viewPurchased=this.viewPurchased.bind(props);
-        if(sessionStorage.getItem("userId")==undefined)
+        if(sessionStorage.getItem("userId")===undefined)
         {
            
             window.location.href="/login";

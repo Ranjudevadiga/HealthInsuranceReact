@@ -45,11 +45,27 @@ class AddCustomerDetails extends Component{
             formIsValid = false
             errors['bodyMassIndex'] = '*Please enter is BodyMassIndex '
         }
+        else if(this.state.bodyMassIndex<15)
+        {
+            formIsValid = false
+            errors['bodyMassIndex'] = '*Please enter valid BodyMassIndex '
+        }
+        else if(this.state.bodyMassIndex>40)
+        {
+            formIsValid = false
+            errors['bodyMassIndex'] = '*Please enter valid BodyMassIndex '
+        }
         if(!this.state.age)
         {
             formIsValid = false
             errors['age'] = '*Please enter Age '
         }
+        else if(this.state.age>60)
+        {
+            formIsValid = false
+            errors['age'] = '*Age must be less than 60'
+        }
+        
         if(!this.state.salaryBracket)
         {
             formIsValid = false
@@ -154,8 +170,7 @@ class AddCustomerDetails extends Component{
                                 </div>
                                 <div>
                                     
-                                    <input type="hidden" name="customerId" value={customerId} 
-                       ref={(input) => { this.customerId = input }} />
+                                    <input type="hidden" name="customerId" value={customerId}  ref={(input) => { this.customerId = input }} />
                                 
                                 </div>
 

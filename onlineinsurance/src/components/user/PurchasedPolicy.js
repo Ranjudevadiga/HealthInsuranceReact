@@ -12,7 +12,7 @@ class PurchasedPolicy extends Component{
         super(props)
         this.onRenew=this.onRenew.bind(this);
         this.viewPolicy=this.viewPolicy.bind(this);
-        if(sessionStorage.getItem("userId")==undefined)
+        if(sessionStorage.getItem("userId")===undefined)
         {
            
             window.location.href="/login";
