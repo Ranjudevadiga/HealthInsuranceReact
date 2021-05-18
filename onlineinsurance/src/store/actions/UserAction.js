@@ -71,9 +71,10 @@ export const buyPolicies=(payload)=>{
                 dispatch(buyPolicySucces(Response.data));
                 
             })
-            .catch(Error=>{
-                alert("This policy is purchased by you already");
-                throw(Error);
+            .catch(error=>{
+                
+                alert(error.response.data);
+                throw(error);
             });
         };
 };

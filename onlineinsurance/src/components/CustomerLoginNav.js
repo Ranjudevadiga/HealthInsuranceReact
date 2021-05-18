@@ -25,6 +25,9 @@ export default class HomeNavBar extends Component{
                       <Link to="/user">
                       <li role="presentation"><a role="menuitem"  tabindex="0" style={{color:'black'}}><span className="glyphicon glyphicon-home"></span> Home Page</a></li>
                       </Link>
+                      <Link to="/addCus">
+                      <li role="presentation"><a role="menuitem"  tabindex="0" style={{color:'black'}}><span className="glyphicon glyphicon-user"></span> Add Profile details</a></li>
+                      </Link>
                         </ul>
                </div>
                  

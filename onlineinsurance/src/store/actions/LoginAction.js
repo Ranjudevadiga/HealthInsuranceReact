@@ -80,8 +80,12 @@ export const registerCustomer=(payload)=>{
 export const additionSuccess=()=>{
     console.log("inside customer addiotn succes method");
     alert("Customer details added successfully");
-    
+    if(sessionStorage.getItem("userId")===undefined){
     window.location.href="/login";
+    }
+    else{
+        window.location.href="/user"; 
+    }
     return{
         type:'CUST_DETAIL_ADD_SUCCESS'
     }
@@ -107,8 +111,9 @@ export const addCustDetails=(payload)=>{
             console.log(Response.data);
             dispatch(additionSuccess());
         })
-        .catch(Error=>{
-            console.log("error");
+        .catch(error=>{
+            alert(error.response.data);
+            window.location.href="/user";
             
             throw(Error);
         });

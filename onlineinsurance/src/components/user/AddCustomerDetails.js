@@ -81,6 +81,11 @@ class AddCustomerDetails extends Component{
     let search=window.location.search;
     let params=new URLSearchParams(search);
     let customerId=params.get('Id')
+
+    if(customerId==null)
+    {
+        customerId=sessionStorage.getItem("userId");
+    }
      
     return(
         <div>
