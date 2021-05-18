@@ -5,6 +5,7 @@ import * as PolicyAction from '../../store/actions/PolicyAction';
 import * as UserAction from '../../store/actions/UserAction';
 import {bindActionCreators} from 'redux';
 import {Link} from 'react-router-dom';
+import CustomerLoginNav from '../CustomerLoginNav';
 class PolicyDisplay extends Component{
     constructor(props)
     {
@@ -46,19 +47,16 @@ class PolicyDisplay extends Component{
          let login=this.props.login;
          
         if(customerId==null){
-           //if(login===undefined){
-             //  alert("unauthorized access");
-             //  window.location.href="/login";
-           //}
             customerId=sessionStorage.getItem("userId");;
         }
         let userlogin = window.localStorage.getItem("login");
         return(
-            <div >
-                <button className="logout" style={{marginLeft:"90%"}} onClick={this.logout}><i class="fa fa-sign-out"></i> Logout</button>
+            <div class="policy-display">
+                <CustomerLoginNav/>
+                
                 <h2 align="center">Policy List</h2>
                 <button className="renew float-right" style={{marginLeft:"80%",marginTop:"6px"}} onClick={()=>this.viewPurchased(customerId)}>Purchased policies</button>
-                <Link to="/user"><button className="renew"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></Link>
+              
                 <table className="table table-striped table-bordered">
                     
                     <thead>

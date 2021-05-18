@@ -3,7 +3,7 @@ import {connect } from 'react-redux';
 import * as PolicyAction from '../../store/actions/PolicyAction';
 import {bindActionCreators} from 'redux';
 import {Link} from 'react-router-dom';
-
+import LoginNavBar from '../LoginNavBar';
 class AdminUpdatePolicy extends Component {
     constructor(props){
         super(props)
@@ -70,7 +70,7 @@ class AdminUpdatePolicy extends Component {
                 policyCover : this.state.policyCover
             }
             this.props.PolicyAction.editPolicy(payload);
-            this.props.history.push("/adminviewpolicy");
+       
         }
     }
     onChange = (obj) => {
@@ -80,11 +80,14 @@ class AdminUpdatePolicy extends Component {
         let pol = this.props.getpolicy;
         console.log(pol);
         return(
-            <div>
-            <h1>Update  Policy </h1>
+           <div class="update">
+               <LoginNavBar/>
+                <div class="row">
+                   <div class="col-lg-4 col-lg-offset-4">
+                    <h1>Update  Policy </h1>
              <form >
                 <div className="form-group">
-                <label>Enter Policy Id</label>
+                <label >Enter Policy Id</label>
                     <input type="text" name="policyId" className="form-control" value={this.state.policyId} onChange={this.onChange}  readOnly></input><br></br>
                     <label>Enter Policy Name</label>
                     <input type="text" name="policyName" className="form-control" value={this.state.policyName} onChange={this.onChange}  required="required"></input><br></br>
@@ -109,8 +112,11 @@ class AdminUpdatePolicy extends Component {
                 </div>
                     <button className="btn btn-success" onClick={this.updatePolicy}>update item</button>
                     <Link to="/adminviewpolicy"> <button className="btn btn-danger">Cancel</button></Link> 
-                </form> 
-            </div>
+                </form>
+                </div>
+                </div> 
+                </div>
+           
     );
 
     }

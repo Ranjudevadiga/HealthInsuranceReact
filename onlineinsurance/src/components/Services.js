@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
+import HomeNavBar from '../HomeNavBar';
 
 class Services extends Component{
 render(){
     return(
         <div>
+          
           <div className="image">
-              
+          <HomeNavBar/>
                </div>
      <div class="service">
          

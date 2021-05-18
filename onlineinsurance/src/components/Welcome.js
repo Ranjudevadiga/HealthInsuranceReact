@@ -1,13 +1,17 @@
 import React, {Component} from 'react';
+import HomeNavBar from '../HomeNavBar';
 import homepage from './images/homepage.jpg'
 
 import homepageee from './images/homepageee.jpg'
 
 class Welcome extends Component{
 render(){
+   
     return(
-        <div class="container">
-  
+
+        <div class="one">
+          <HomeNavBar/>
+        
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
   
     <ol class="carousel-indicators">
@@ -21,12 +25,7 @@ render(){
 
       <div class="item active">
         <img src={homepage} alt="Los Angeles" ></img>
-        <div className="box-one">
-          <label>Login</label>
-        <p class="change_link">
-					<a href="/login" class="login-one"> Login</a>
-				</p>
-      </div>
+  
         
       </div>
 

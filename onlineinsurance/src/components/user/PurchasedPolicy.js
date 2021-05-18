@@ -4,6 +4,7 @@ import * as PolicyAction from '../../store/actions/PolicyAction';
 import * as UserAction from '../../store/actions/UserAction';
 import {bindActionCreators} from 'redux';
 import {Link} from 'react-router-dom';
+import CustomerLoginNav from '../CustomerLoginNav';
 class PurchasedPolicy extends Component{
     
     constructor(props)
@@ -43,12 +44,6 @@ class PurchasedPolicy extends Component{
         let search=window.location.search;
         let params=new URLSearchParams(search);
         let customerId=params.get('Id')
-       // if(customerId===null)
-       // {
-        //   alert("Unauthorized access");
-         //   window.location.href="/login";
-       // }
-       
         this.props.PolicyAction.getBoughtPolicy(customerId);
     }
     render(){
@@ -57,8 +52,8 @@ class PurchasedPolicy extends Component{
         let params=new URLSearchParams(search);
         let customerId=params.get('Id')
         return(
-            <body>
-                 <button className="logout" style={{marginLeft:"90%"}} onClick={this.logout}><i class="fa fa-sign-out"></i> Logout</button>
+            <body class="policy-display">
+            <CustomerLoginNav/>
                 <h2 align="center">Purchased Policy</h2>
                 <button className="renew" style={{marginLeft:"90%"}} onClick={()=>this.viewPolicy(customerId)}>View Policy</button>
                 <table className="table table-striped table-bordered">

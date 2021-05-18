@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
+import HomeNavBar from '../HomeNavBar';
 import contactus from './images/contactus.jpg'
 
 class Contact extends Component{
 render(){
     return(
         <div>
+           
         <div class="contact">
+        <HomeNavBar/>
             <img src={contactus} alt="contact" width={1300} height={500}></img>
         </div>
         <div class="contactbox">

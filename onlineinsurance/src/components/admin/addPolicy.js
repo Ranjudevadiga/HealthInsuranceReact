@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import * as PolicyAction from '../../store/actions/PolicyAction';
 import {bindActionCreators} from 'redux';
 import './addPolicy.css'
+import LoginNavBar from '../LoginNavBar'
 class addPolicy extends Component{
     constructor(props) {
         super(props)
@@ -116,7 +117,8 @@ class addPolicy extends Component{
     render() {
         return (
             <div>
-                <div className="container">
+                <LoginNavBar/>
+                <div className="add-policy">
                     <div className="row">
                         <div className="card col-md-6 offset-md-3 offset-md-3 ">
                             <h3 className="text-center">Add Policy</h3>
@@ -124,28 +126,28 @@ class addPolicy extends Component{
                                 <form>
 
                                     <div className="form-group">
-                                        <label>Policy Name</label>
+                                        <label style={{color:'black'}}>Policy Name</label>
                                         <input placeholder="Policy Name"  name="policyname" className="form-control"
                                             value={this.state.policyName} onChange={this.changePolicyName} />
                                          <div  className='errorMsg'>{this.state.errors.policyName}</div><br></br>
                                     </div>
 
                                     <div className="form-group">
-                                        <label>Age Group</label>
+                                        <label style={{color:'black'}}>Age Group</label>
                                         <input placeholder="Age Group" name="agegroup" type="number" className="form-control"
                                             value={this.state.ageGroup} onChange={this.changeAgeGroup} />
                                             <div  className='errorMsg'>{this.state.errors.ageGroup}</div><br></br>
                                     </div>
 
                                     <div className="form-group">
-                                        <label>Policy Term</label>
+                                        <label style={{color:'black'}}>Policy Term</label>
                                         <input placeholder="Policy Term" name="policyterm" type="number" className="form-control"
                                             value={this.state.policyTerm} onChange={this.changePolicyTerm} />
                                             <div  className='errorMsg'>{this.state.errors.policyTerm}</div><br></br>
                                     </div>
 
                                     <div className="form-group">
-                                        <label>Policy Base Amount</label>
+                                        <label style={{color:'black'}}>Policy Base Amount</label>
                                         <input placeholder="Policy Base Amount" type="number" name="baseamount" className="form-control"
                                             value={this.state.baseAmount} onChange={this.changeBaseAmount} />
                                             <div  className='errorMsg'>{this.state.errors.baseAmount}</div><br></br>
@@ -153,7 +155,7 @@ class addPolicy extends Component{
                                     </div>
 
                                     <div className="form-group">
-                                        <label>Policy Cover</label>
+                                        <label style={{color:'black'}}>Policy Cover</label>
                                         <input placeholder="Policy Cover" type="number" name="policycover" className="form-control"
                                             value={this.state.policyCover} onChange={this.changePolicyCover} />
                                             <div  className='errorMsg'>{this.state.errors.policyCover}</div><br></br>

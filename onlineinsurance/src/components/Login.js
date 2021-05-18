@@ -5,6 +5,7 @@ import * as LoginAction from '../store/actions/LoginAction';
 import {bindActionCreators} from 'redux';
 import {Redirect} from 'react-router-dom';
 import './Login.css';
+import HomeNavBar from '../HomeNavBar';
 
 class Login extends Component{
    constructor(){
@@ -62,7 +63,7 @@ class Login extends Component{
             return <Redirect to="/admin"></Redirect>
         }
         else if(login.role==="user"){
-            alert("valid user....");
+          
             return <Redirect to="/user"></Redirect>
         }
         else{
@@ -72,6 +73,8 @@ class Login extends Component{
         
     }
     return(
+        <div>
+        <HomeNavBar/>
         <div className="new">
            <div class="box">
   <h2>Login</h2>
@@ -97,6 +100,7 @@ class Login extends Component{
     </form>
     </div>
    
+ </div>
  </div>
 
     );

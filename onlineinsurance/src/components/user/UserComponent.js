@@ -3,6 +3,7 @@ import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
 import {Redirect} from 'react-router-dom';
 import { connect } from 'react-redux';
+import CustomerLoginNav from '../CustomerLoginNav';
 class UserComponent extends Component{
     constructor(props){
         super(props)
@@ -26,15 +27,13 @@ render(){
        
     return(
         <body>
-       
+       <CustomerLoginNav/>
        <div class="user">
       
         <center className="txt">Welcome {sessionStorage.getItem("username")}</center>
         <Link to="/customerViewPolicy">
             <button className="btn" >View Policies</button>
         </Link>&nbsp;
-  
-        <button className="btn " id="bt" onClick={this.logout}> Logout</button>
         </div>
         </body>
         

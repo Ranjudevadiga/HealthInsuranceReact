@@ -1,7 +1,7 @@
 import Welcome from './components/Welcome';
 import AboutUs from './components/AboutUs';
 import './App.css';
-import {BrowserRouter as Router, Route,Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route,Switch, useLocation} from 'react-router-dom';
 import Login from './components/Login';
 
 import UserComponent from './components/user/UserComponent';
@@ -16,12 +16,16 @@ import AdminUpdatePolicy from './components/admin/AdminUpdatePolicy'
 import PurchasedPolicy from './components/user/PurchasedPolicy'
 import Services from './components/Services';
 import Contact from './components/Contact';
+import ErrorBoundary from './ErrorBoundary';
+
+
 
 function App() { 
   return (
     <div className="App">
      
       <Router>
+        <ErrorBoundary >  
       <Switch>
 
       <Route path="/" exact component={Welcome}></Route>
@@ -40,6 +44,7 @@ function App() {
       <Route path="/edit-policy" exact component={AdminUpdatePolicy}></Route>
       <Route path="/viewPurchasedPolicy" exact component={PurchasedPolicy}></Route> 
       </Switch>
+      </ErrorBoundary>
       </Router>
     </div>
   );

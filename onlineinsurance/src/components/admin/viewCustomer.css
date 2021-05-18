@@ -1,30 +1,7 @@
-/*.customer-table table { 
-	width: 750px; 
-	border-collapse: collapse; 
-	margin:50px auto;
-    
-	}
 
-.customer-table tr { 
-    
-	background: rgb(5, 11, 61);
-    color: white; 
-	}
-
-    .customer-table th { 
-	background: #b1afbe; 
-	color: white; 
-	font-weight: bold; 
-	}
-
-    .customer-table td, th { 
-	padding: 10px; 
-	border: 1px solid #ccc; 
-	text-align: left; 
-	font-size: 18px;
-	}*/
     .view  {
         height: 100%;
+        width:100%
     }
     
     .view  {
@@ -36,13 +13,7 @@
     .viewcust h1{
         text-align: center;
     }
-    /*.viewcust .container {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }*/
-    
+   
     .viewcust .customer-table {
         width: 800px;
         border-collapse: collapse;
@@ -50,6 +21,14 @@
         box-shadow: 0 0 20px rgba(0,0,0,0.1);
     }
     
+    .update .form-group label{
+        color: black;
+        
+    }
+    .update{
+        background-color: linear-gradient(45deg, #49a09d, #d4cfd8);
+    }
+
     .customer-table th,
     td {
         padding: 15px;

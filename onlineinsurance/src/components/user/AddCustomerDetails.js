@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as LoginAction from '../../store/actions/LoginAction';
 import {bindActionCreators} from 'redux';
-import './RegisterCustomer.css'
+import './RegisterCustomer.css';
+import CustomerLoginNav from '../CustomerLoginNav';
 
 class AddCustomerDetails extends Component{
    constructor(props){
@@ -83,6 +84,7 @@ class AddCustomerDetails extends Component{
      
     return(
         <div>
+            <CustomerLoginNav/>
             <br></br>
            
             <div className="container">

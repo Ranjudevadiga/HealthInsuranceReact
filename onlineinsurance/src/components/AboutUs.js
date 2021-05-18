@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
+import HomeNavBar from '../HomeNavBar';
 
 class AboutUs extends Component{
 render(){
     return(
         <div>
+            <HomeNavBar/>
             <h1>About Us</h1>
             <p>Omega Health Insurance offers  health coverage and  related services to  
                 millions of people across the world. Through these offerings, we improve

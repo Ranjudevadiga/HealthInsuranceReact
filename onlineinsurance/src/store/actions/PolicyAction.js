@@ -29,7 +29,7 @@ export const getPolicy=()=>{
 
 export const policyDeleteSuccess=(policy)=>{
     console.log("inside delete success");
-    
+    window.location.href="/adminviewpolicy";
     return{
         type: 'DELETE_ITEM_SUCCESS',
         payload:policy
@@ -84,6 +84,7 @@ let data={
 
 export const editPolicySuccess=()=>{
     console.log("inside editItemSuccess method");
+    window.location.href="/adminviewpolicy";
     return {
         type : 'POLICY_EDITED'
     }

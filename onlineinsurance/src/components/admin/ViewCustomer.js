@@ -4,7 +4,7 @@ import * as UserAction from '../../store/actions/UserAction'
 import { bindActionCreators } from 'redux';
 import {Link} from 'react-router-dom';
 import './viewCustomer.css';
-
+import LoginNavBar from '../LoginNavBar';
 
 //import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -31,23 +31,8 @@ render(){
     
   return(
     <body class="view">
-    <div class="viewcust">
-    <div class="container">
-              <div class="dropdown">
-               <button class="viewbtn" style={{marginLeft:"85%"}} type="button" id="menu1" data-toggle="dropdown"><span className="glyphicon glyphicon-user"></span> Profile
-                 <span class="caret"></span></button>
-                  <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="menu1">
-                      <Link to="/login" >
-                    <li role="presentation" ><a role="menuitem"  tabindex="0"style={{color:'black'}} ><span className="glyphicon glyphicon-log-out" onClick={this.logout}></span> Logout</a></li><br></br>
-                    </Link>
-                    <Link to="/admin">
-                    <li role="presentation"><a role="menuitem"  tabindex="0" style={{color:'black'}}><span className="glyphicon glyphicon-home"></span> Admin Page</a></li>
-                    </Link>
-                      </ul>
-             </div>
-          </div>
-          
-    
+        <LoginNavBar/>
+    <div class="viewcust"> 
         <h1>CUSTOMER</h1>
         <table className="customer-table" align="center" width="50%">
             
@@ -76,9 +61,6 @@ render(){
                        
               </tbody>
         </table><br></br>
-        
-        <Link to="/admin"><button className="btn btn-info" class="viewbtn">Back to admin page</button></Link>
-       
    </div>
    </body>
   );
