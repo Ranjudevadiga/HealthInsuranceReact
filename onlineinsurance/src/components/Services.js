@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import HomeNavBar from '../HomeNavBar';
+import HomeNavBar from './HomeNavBar';
 
 class Services extends Component{
 render(){

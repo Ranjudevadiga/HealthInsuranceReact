@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import HomeNavBar from '../HomeNavBar';
+import HomeNavBar from './HomeNavBar';
 import homepage from './images/homepage.jpg'
 
 import homepageee from './images/homepageee.jpg'

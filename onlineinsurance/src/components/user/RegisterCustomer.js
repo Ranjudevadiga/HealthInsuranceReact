@@ -3,7 +3,9 @@ import {connect} from 'react-redux';
 
 import * as LoginAction from '../../store/actions/LoginAction';
 import {bindActionCreators} from 'redux';
-import './RegisterCustomer.css'
+import './RegisterCustomer.css';
+import HomeNavBar from '../HomeNavBar';
+
 const initialState={
     firstName:'',
     lastName:'',
@@ -97,6 +99,7 @@ onChange=(seg)=>this.setState({[seg.target.name]:seg.target.value});
         return(
            
             <div>
+                <HomeNavBar/>
                 <br></br>
                 <div className="SignUp">
                 <div class="box">

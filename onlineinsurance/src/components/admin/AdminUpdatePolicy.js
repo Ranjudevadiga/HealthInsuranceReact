@@ -115,7 +115,7 @@ class AdminUpdatePolicy extends Component {
                                   <input type="number" name="policyCover" className="form-control" value={this.state.policyCover} onChange={this.onChange}></input> <br></br>
                                    <div  className='errorMsg'>{this.state.errors.policyCover}</div><br></br>
                             </div>
-                         <button className="btn btn-success" onClick={this.updatePolicy}>update item</button>
+                         <button className="btn btn-success" onClick={this.updatePolicy}>Update policy</button>
                          <Link to="/adminviewpolicy"> <button className="btn btn-danger">Cancel</button></Link> 
                         </form>
                     </div>

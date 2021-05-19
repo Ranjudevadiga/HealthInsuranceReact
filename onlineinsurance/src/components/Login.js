@@ -5,7 +5,7 @@ import * as LoginAction from '../store/actions/LoginAction';
 import {bindActionCreators} from 'redux';
 import {Redirect} from 'react-router-dom';
 import './Login.css';
-import HomeNavBar from '../HomeNavBar';
+import HomeNavBar from './HomeNavBar';
 
 class Login extends Component{
    constructor(){

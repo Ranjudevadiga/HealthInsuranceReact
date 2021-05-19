@@ -26,7 +26,7 @@ export default class CustomerLoginNav extends Component{
                       <li role="presentation"><a role="menuitem"  tabindex="0" style={{color:'black'}}><span className="glyphicon glyphicon-home"></span> Home Page</a></li>
                       </Link>
                       <Link to="/addCus">
-                      <li role="presentation"><a role="menuitem"  tabindex="0" style={{color:'black'}}><span className="glyphicon glyphicon-user"></span> Add Profile details</a></li>
+                      <li role="presentation"><a role="menuitem"  tabindex="0" style={{color:'black'}}><span className="glyphicon glyphicon-user"></span> Add Details</a></li>
                       </Link>
                         </ul>
                </div>

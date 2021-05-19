@@ -4,6 +4,8 @@ import * as LoginAction from '../../store/actions/LoginAction';
 import {bindActionCreators} from 'redux';
 import './RegisterCustomer.css';
 import CustomerLoginNav from '../CustomerLoginNav';
+import { Redirect } from 'react-router';
+import {Link} from 'react-router-dom';
 
 class AddCustomerDetails extends Component{
    constructor(props){
@@ -75,6 +77,7 @@ class AddCustomerDetails extends Component{
         this.setState({ errors })
         return formIsValid
    }
+   
    addCustomerDetails=(add)=>{
     add.preventDefault();
     if(this.validate()){
@@ -91,6 +94,8 @@ class AddCustomerDetails extends Component{
        this.props.LoginAction.addCustDetails(payload);
     }
    }
+  
+   
    onChange=(add)=>this.setState({[add.target.name]:add.target.value});
    render(){
     let register=this.props.register;
@@ -104,8 +109,8 @@ class AddCustomerDetails extends Component{
     }
      
     return(
-        <div>
-            <CustomerLoginNav/>
+        <div class="custdetails">
+            
             <br></br>
            
             <div className="container">
@@ -175,7 +180,10 @@ class AddCustomerDetails extends Component{
                                 </div>
 
                                 <button className="btn btn-success" onClick={this.addCustomerDetails}>Save</button>
-                          </form>
+                                {(sessionStorage.getItem("userId")==undefined)?
+                                <Link to="/login"> <button className="btn btn-danger">Cancel</button></Link> :<Link to="/user"> <button className="btn btn-danger">Cancel</button></Link>
+                            }
+                            </form>
                     </div>
                 </div>
             </div>
