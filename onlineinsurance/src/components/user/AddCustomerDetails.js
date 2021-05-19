@@ -19,11 +19,10 @@ class AddCustomerDetails extends Component{
         salaryBracket:'',
         customerId:'',
         errors:{}
-        
-       }
-       
+        }
        this.addCustomerDetails=this.addCustomerDetails.bind(this);
    }
+   
    validate = () => {
         let errors = {}
         let formIsValid = true
@@ -45,7 +44,7 @@ class AddCustomerDetails extends Component{
         if(!this.state.bodyMassIndex)
         {
             formIsValid = false
-            errors['bodyMassIndex'] = '*Please enter is BodyMassIndex '
+            errors['bodyMassIndex'] = '*Please enter the BodyMassIndex '
         }
         else if(this.state.bodyMassIndex<15)
         {
@@ -73,7 +72,6 @@ class AddCustomerDetails extends Component{
             formIsValid = false
             errors['salaryBracket'] = '*Please enter Salary Bracket '
         }
-        
         this.setState({ errors })
         return formIsValid
    }
@@ -94,8 +92,7 @@ class AddCustomerDetails extends Component{
        this.props.LoginAction.addCustDetails(payload);
     }
    }
-  
-   
+
    onChange=(add)=>this.setState({[add.target.name]:add.target.value});
    render(){
     let register=this.props.register;
@@ -110,9 +107,7 @@ class AddCustomerDetails extends Component{
      
     return(
         <div class="custdetails">
-            
             <br></br>
-           
             <div className="container">
                 <div className="row">
                     <div className="card col-md-6 offset-md-3 offset-md-3">
@@ -128,9 +123,8 @@ class AddCustomerDetails extends Component{
                                         <option value="no">No</option>
                                     </select>
                                     <div  className='errorMsg'>{this.state.errors.isDiabetic}</div><br></br>
+                                </div>
 
-   
-                                </div> 
                                 <div>   
                                     <label style={{color:'black'}}>Are you smoker?</label>
                                     <br></br>
@@ -141,26 +135,27 @@ class AddCustomerDetails extends Component{
                                     </select>
                                     <div  className='errorMsg'>{this.state.errors.isSmoker}</div><br></br>
 
-                                    </div>
-                               <div>    
+                                </div>
+
+                                <div>    
                                     <label style={{color:'black'}}>Are you alcoholic?</label>
                                     <br></br>
-                                    
                                     <select name="isAlcoholic" onChange={this.onChange}style={{height:"40px"}} className="form-control">
                                     <option value="Select">Select</option>
                                         <option value="yes">Yes</option>
                                         <option value="no">No</option>
-                                       
-                                    </select>
+                                       </select>
                                     <div  className='errorMsg'>{this.state.errors.isAlcoholic}</div><br></br>
 
-                                    </div>
-                                    <div>
+                                </div>
+
+                                <div>
                                     <label style={{color:'black'}}>Body Mass Index</label>
                                     <input type="number" placeholder="Enter bodymassindex" name="bodyMassIndex" value={this.state.bodyMassIndex} className="form-control" onChange={this.onChange}></input>
                                     <div  className='errorMsg'>{this.state.errors.bodyMassIndex}</div><br></br>
 
                                 </div>
+
                                 <div>
                                     <label style={{color:'black'}}>Age</label>
                                     <input type="number" placeholder="Enter Age" name="age" value={this.state.age} className="form-control" onChange={this.onChange}></input>
@@ -173,10 +168,9 @@ class AddCustomerDetails extends Component{
                                     <div  className='errorMsg'>{this.state.errors.salaryBracket}</div><br></br>
 
                                 </div>
+
                                 <div>
-                                    
                                     <input type="hidden" name="customerId" value={customerId}  ref={(input) => { this.customerId = input }} />
-                                
                                 </div>
 
                                 <button className="btn btn-success" onClick={this.addCustomerDetails}>Save</button>
@@ -184,27 +178,28 @@ class AddCustomerDetails extends Component{
                                 <Link to="/login"> <button className="btn btn-danger">Cancel</button></Link> :<Link to="/user"> <button className="btn btn-danger">Cancel</button></Link>
                             }
                             </form>
+                        </div>
                     </div>
                 </div>
             </div>
-            </div>
-          </div> 
+        </div> 
                         
     )
 }
 }
+
 function mapStateToProps(state){
 return{
     customerDetails:state.LoginReducer.customerDetails,
     register:state.LoginReducer.register
 };
 }
+
 function mapDispatchToProps(dispatch){
 return{
     LoginAction: bindActionCreators(LoginAction,dispatch)
 };
 }
-
 
 export default connect(mapStateToProps,mapDispatchToProps)(AddCustomerDetails);
 

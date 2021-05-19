@@ -5,8 +5,8 @@ import * as UserAction from '../../store/actions/UserAction';
 import {bindActionCreators} from 'redux';
 import {Link} from 'react-router-dom';
 import CustomerLoginNav from '../CustomerLoginNav';
+
 class PurchasedPolicy extends Component{
-    
     constructor(props)
     {
         super(props)
@@ -19,7 +19,7 @@ class PurchasedPolicy extends Component{
         }
         
     }
- onRenew=(policyDetailsId,policyId,customerId)=>{
+    onRenew=(policyDetailsId,policyId,customerId)=>{
     let payload={
         policyDetailsId:policyDetailsId,
         policyId:policyId,
@@ -28,16 +28,15 @@ class PurchasedPolicy extends Component{
         if(window.confirm('Are you sure you want to renew the policy?')){
             this.props.UserAction.renewPolicy(payload);
         }
-        
     }
    
- viewPolicy=(customerId)=>{
+    viewPolicy=(customerId)=>{
     window.location.href="/customerViewPolicy?Id="+customerId;
- }
+    }
+
     logout(){
         sessionStorage.removeItem("userId");
         window.location.href="/login"
-
     }
 
     componentDidMount(){
@@ -46,6 +45,7 @@ class PurchasedPolicy extends Component{
         let customerId=params.get('Id')
         this.props.UserAction.getBoughtPolicy(customerId);
     }
+
     render(){
         let newDate = new Date();
         let search=window.location.search;
@@ -87,30 +87,28 @@ class PurchasedPolicy extends Component{
                                          <Fragment>
                                          <button style={{marginLeft:"5px"}} className="renew"  onClick={()=>this.onRenew(policyDetail.policyDetailsId,policyDetail.policy.policyId,policyDetail.customer.customerId)} ><i class="fa fa-refresh" aria-hidden="true"></i> Renew</button>
                                          </Fragment>:<Fragment></Fragment>
-    }
-                                        </td>
-                                               
+                                    }
+                                </td>
                             </tr>
-                            )}
+                        )}
                     </tbody>
-                    </table>
-                   
+                </table>
             </body>
-
         )
+    }
 }
-}
+
 function mapStateToProps(state){
     return{
         policyDetails:state.UserReducer.policyDetails,
        login:state.LoginReducer.login
     };
 }
+
 function mapDispatchToProps(dispatch){
     return{
        UserAction: bindActionCreators(UserAction,dispatch)
     };
 }
-
 
 export default connect(mapStateToProps,mapDispatchToProps)(PurchasedPolicy);

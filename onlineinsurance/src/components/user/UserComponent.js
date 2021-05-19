@@ -1,8 +1,8 @@
-
 import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 import CustomerLoginNav from '../CustomerLoginNav';
+
 class UserComponent extends Component{
     constructor(props){
         super(props)
@@ -12,15 +12,15 @@ class UserComponent extends Component{
             window.location.href="/login";
         }
     }
+
     logout(){
         sessionStorage.removeItem("userId");
         window.location.href="/login";
     }
   
 render(){
-   
-    return(
-        <body>
+   return(
+       <body>
        <CustomerLoginNav/>
        <div class="user">
       
@@ -34,9 +34,11 @@ render(){
     );
 }
 }
+
 function mapStateToProps(state) {
     return {
         login : state.LoginReducer.login
     };
 }
+
 export default connect(mapStateToProps) (UserComponent);

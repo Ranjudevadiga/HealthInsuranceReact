@@ -4,6 +4,7 @@
   padding-top: 60px;
   background-image: url(  https://www.pixelstalk.net/wp-content/uploads/2016/09/All-White-Background-for-Desktop-620x388.jpg);
 }
+
 .box {
   position: absolute;
   top: 70%;
@@ -40,7 +41,6 @@
   background: transparent;
 }
 
-
 .box .inputBox input:focus ~ label,
 .box .inputBox input:valid ~ label,
 .box .inputBox input:not([value=""]) ~ label {
@@ -52,44 +52,46 @@
 
 .box .errorMsg{
   float:left;
- top: -10px;
+  top: -10px;
   color: #f40303;
   font-size: 1.3rem;
-
 }
+
 .card-body .errorMsg{
   float:left;
  top: -10px;
   color: #f40303;
   font-size: 1.3rem;
-
 }
+
 .service-content p{
   font-size: medium;
   text-align: justify;
   color: darkcyan;
   
 }
+
 .front-content h3{
   text-align: center;
   font-size: x-large;
  font-weight: bolder;
   text-shadow:1px 1px 1px darkcyan;
 }
+
 .block-heading h2{
   text-align: center;
   font-size: xx-large;
  font-weight: bolder;
   text-shadow:1px 1px 1px darkcyan;
+}
 
-} 
 .user{
   background-size: cover;
   height: 100vh;
   background-image: url(https://uhdwallpapers.xyz/media/images/800x/2020/08/30/blue-triangle-abstract-4k-hd-abstract-wallpaper-7885791598762083.jpg);
-}   
+}
+
 .user .btn {
-  
   margin: auto;
   display: flex;
   justify-content: center;
@@ -104,20 +106,20 @@
   background-color:blue;
   border: none;
   border-radius: 15px;
-  
   width:200px;
 }
 
 .user .btn:hover {background-color:  #361f60;
-  box-shadow: 0 4px 15px 0 rgba(0,0,0, 0.75);}
+  box-shadow: 0 4px 15px 0 rgba(0,0,0, 0.75);
+}
 
 .user .btn:active {
   background-color: #1a133a;
   box-shadow: 0 5px rgb(175, 173, 173);
   transform: translateY(4px);
 }
+
 .user .txt{
-  
   color:white;
   line-height: 300px;
   font-size: 300%;
@@ -129,26 +131,22 @@
     
 }
 
-
 .renew {
   display:block;
-  
   border-radius: 24px;
   border: 2px solid white;
   color: #FFF;
   padding: 8px 8px;
   background-image:  linear-gradient(to right, rgb(100, 65, 165) 0%, rgb(42, 8, 69) 51%, rgb(100, 65, 165) 100%);
-  
-}
+  }
+
 .logout:hover{
   background-color:  pink;
    box-shadow: 0 4px 15px 0 rgba(0,0,0, 0.75);
-   
-}
+   }
 
 .logout{
   display:block;
-  
   border-radius: 24px;
   border: 2px solid white;
   color: #FFF;
@@ -159,17 +157,17 @@
 .view:hover{
   background-color:  pink;
    box-shadow: 0 4px 15px 0 rgba(0,0,0, 0.75);
-   
 }
+
 .view{
   display:inline-block;
-  
   border-radius: 24px;
   border: 2px solid white;
   color: #FFF;
   padding: 10px 10px;
   background-image: linear-gradient(to right, rgb(58, 123, 213) 0%, rgb(58, 96, 115) 51%, rgb(58, 123, 213) 100%);
 }
+
 .custdetails{
   background: linear-gradient(45deg, #49a09d, #d4cfd8);
   height: 100vh;

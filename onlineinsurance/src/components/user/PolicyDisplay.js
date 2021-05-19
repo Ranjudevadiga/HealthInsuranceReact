@@ -6,6 +6,7 @@ import * as UserAction from '../../store/actions/UserAction';
 import {bindActionCreators} from 'redux';
 import {Link} from 'react-router-dom';
 import CustomerLoginNav from '../CustomerLoginNav';
+
 class PolicyDisplay extends Component{
     constructor(props)
     {
@@ -14,13 +15,14 @@ class PolicyDisplay extends Component{
         this.viewPurchased=this.viewPurchased.bind(props);
         if(sessionStorage.getItem("userId")==undefined)
         {
-           
-            window.location.href="/login";
+           window.location.href="/login";
         }
     }
+
     viewPurchased=(customerId)=>{
         window.location.href="/viewPurchasedPolicy?Id="+customerId;
     }
+
     buy=(policyId,customerId)=>{
         let payload={
             customerId:customerId,
@@ -28,23 +30,23 @@ class PolicyDisplay extends Component{
         }
         this.props.UserAction.buyPolicies(payload);
     }
+
     logout(){
         sessionStorage.removeItem("userId");
         
         window.location.href="/login"
 
     }
+
     componentDidMount(){
-        
         this.props.PolicyAction.getPolicy(); 
     }
     
-   
     render(){
         let search=window.location.search;
         let params=new URLSearchParams(search);
         let customerId=params.get('Id');
-         let login=this.props.login;
+        let login=this.props.login;
          
         if(customerId==null){
             customerId=sessionStorage.getItem("userId");;
@@ -92,21 +94,16 @@ class PolicyDisplay extends Component{
                                       
                                        }
                                     </td>
-                                                                          
-                                        
-                        
                                 </tr>
-                            
-                                )
+                            )
                         }
                     </tbody>
                 </table>
-                
-               
             </div>
         );
     }
 }
+
 function mapStateToProps(state){
     return{
         policies:state.PolicyReducer.policies,
@@ -114,12 +111,12 @@ function mapStateToProps(state){
         policyDetails:state.UserReducer.policyDetails
     };
 }
+
 function mapDispatchToProps(dispatch){
     return{
        PolicyAction: bindActionCreators(PolicyAction,dispatch),
        UserAction: bindActionCreators(UserAction,dispatch)
     };
 }
-
 
 export default connect(mapStateToProps,mapDispatchToProps)(PolicyDisplay);
